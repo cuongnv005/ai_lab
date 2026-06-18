@@ -1,93 +1,162 @@
-# AI_Lab
+# 🤖 Hướng Dẫn Sử Dụng Beki AI Agents (Workflows & Skills)
 
+Dự án Beki AI sử dụng hệ thống các AI Agents để chuẩn hóa và tăng tốc quá trình lập trình. Để sử dụng hệ thống AI một cách hiệu quả nhất, bạn cần nắm rõ ba khái niệm cốt lõi: **Skills** (Kỹ năng/Tiêu chuẩn), **Workflows** (Quy trình làm việc) và **Feature Development Flow** (Quy trình phát triển tính năng).
 
+---
 
-## Getting started
+## 1. 🚀 Quy Trình Phát Triển Tính Năng (Feature Development Flow)
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+Đây là quy trình chuẩn "đầu-đến-cuối" (end-to-end) để chuyển đổi một ý tưởng thô thành sản phẩm hoàn chỉnh trong dự án:
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+1.  **Phân tích yêu cầu sơ bộ (Draft Analysis):**
+    *   Bạn đặt file yêu cầu thô (ví dụ: `new-feature.md`) vào thư mục `docs/draft/`.
+    *   Sử dụng lệnh: `/pm-analyze-draft-req`.
+    *   **Kết quả:** Một bản đặc tả kỹ thuật chuẩn chỉnh được tạo ra trong `docs/requirements/`.
 
-## Add your files
+2.  **Phân rã tác vụ (Task Decomposition):**
+    *   Sau khi có bản đặc tả, bạn yêu cầu AI chia nhỏ nó thành các bước thực hiện.
+    *   Sử dụng lệnh: `/pm-decompose-req-to-tasks`.
+    *   **Kết quả:** Các file task nhỏ (TODO list) được tạo ra trong thư mục `docs/tasks/`.
 
-* [Create](https://docs.gitlab.com/user/project/repository/web_editor/#create-a-file) or [upload](https://docs.gitlab.com/user/project/repository/web_editor/#upload-a-file) files
-* [Add files using the command line](https://docs.gitlab.com/topics/git/add_files/#add-files-to-a-git-repository) or push an existing Git repository with the following command:
+3.  **Thực thi tác vụ (Task Execution):**
+    *   **Backend** — yêu cầu AI thực hiện từng file task bằng các workflow chuyên dụng:
+        *   `/execute-api-task`: Để phát triển API.
+        *   `/execute-database-task`: Để tạo Migration, Model, Seeder, Enum.
+        *   `/execute-job-task`: Để tạo Background Job.
+        *   `/execute-command-task`: Để tạo Artisan Command.
+    *   **Frontend** — yêu cầu AI thực hiện task bằng các skill trong `/.agents/skills/bks-fe-*` (xem mục 3.1). Thứ tự khuyến nghị:
+        1.  `bks-fe-implement-feature` — scaffold feature (form / list / CRUD / detail).
+        2.  `bks-fe-ds-sdk-consumer` — UI theo `@bks/ds-system-sdk` (AI tự nạp khi viết UI).
+        3.  `bks-fe-api-integration` — ghép API thật (repository, Zod, 422, toast).
+        4.  `bks-fe-list-url-state` — đồng bộ filter/pagination với URL (list page).
+        5.  `bks-fe-create-tc-component` + `bks-fe-create-tc-flow` — viết test Vitest + Playwright.
+    *   **Kết quả:** Code hoàn chỉnh, Test case và tài liệu logic (`docs/logic/`).
+
+---
+
+## 2. ⚡ Workflows (Quy trình làm việc chi tiết)
+
+**Workflows** là các kịch bản hướng dẫn AI thực hiện các bước cụ thể phù hợp với tiêu chuẩn dự án. Tất cả workflows được lưu ở thư mục `/.agents/workflows/`.
+
+### Cách Sử Dụng Workflows (Slash Commands)
+Bạn chỉ cần gõ các **Slash Command** vào hộp thoại chat với AI kèm theo đường dẫn file liên quan.
+
+**Các Lệnh Quan Trọng:**
+*   `/pm-analyze-draft-req`: Phân tích yêu cầu từ `docs/draft/` -> `docs/requirements/`.
+*   `/pm-decompose-req-to-tasks`: Phân rã đặc tả từ `docs/requirements/` -> `docs/tasks/`.
+*   `/execute-api-task`: Thực thi task phát triển API (Bắt buộc dùng cho Backend API).
+*   `/execute-database-task`: Thực thi task liên quan đến hạ tầng Database.
+*   `/execute-job-task`: Thực thi task liên quan đến Background Job.
+*   `/execute-command-task`: Thực thi task liên quan đến Artisan Command.
+
+---
+
+## 3. 🎯 Skills (Kỹ năng & Tiêu chuẩn)
+
+**Skills** là tập hợp các quy tắc, tiêu chuẩn mã nguồn mà AI Agent **BẮT BUỘC** phải tuân theo. AI sẽ tự động nạp các skill này khi thực hiện Workflows tương ứng. Tất cả skills nằm trong `/.agents/skills/`.
+
+### Các Skills Chính (Backend)
+*   `bks-be-api-standard`: Tiêu chuẩn vàng cho API (Controller → Service → Resource).
+*   `bks-be-database-standard`: Tiêu chuẩn cho Migration, Model, Factory, Seeder.
+*   `bks-be-testing-standard`: Tiêu chuẩn viết Unit/Feature Test (AAA pattern).
+*   `bks-be-job-standard`: Tiêu chuẩn xử lý tác vụ nền và Service delegation.
+*   `bks-be-command-standard`: Tiêu chuẩn viết Artisan Command và Scheduling.
+*   `bks-doc-logic-standard`: Quy chuẩn viết tài liệu nghiệp vụ (Logic Docs).
+*   `bks-requirement-analysis`: Phương pháp luận phân tích yêu cầu từ Draft.
+*   `bks-requirement-to-tasks`: Kỹ thuật chia nhỏ task và quản lý phụ thuộc.
+
+### 3.1. Các Skills Frontend (Next.js)
+
+Các skill frontend nằm trong `/.agents/skills/bks-fe-*`. AI **bắt buộc** nạp skill tương ứng trước khi viết code. Bạn có thể @ mention trực tiếp skill hoặc dùng trigger phrase bên dưới.
+
+| Skill | Khi nào dùng | Trigger / Lệnh gợi ý |
+|-------|--------------|----------------------|
+| [`bks-fe-implement-feature`](.agents/skills/bks-fe-implement-feature/SKILL.md) | **Skill gốc** — triển khai feature FE end-to-end: phân loại flow (A form / B list / C CRUD / D detail), Q&A, design system, form, list, pre-merge checklist | *"implement feature"*, *"làm màn hình CRUD"*, *"tạo feature frontend"* |
+| [`bks-fe-api-integration`](.agents/skills/bks-fe-api-integration/SKILL.md) | Ghép API: repository pattern, Zod runtime guard, RHF validation, hook orchestration, map 422 → `setError`, toast policy | *"api-integration"*, *"ghép api"*, *"tích hợp api"*, *"kết nối api"* |
+| [`bks-fe-ds-sdk-consumer`](.agents/skills/bks-fe-ds-sdk-consumer/SKILL.md) | UI với `@bks/ds-system-sdk`: component, layout, typography, filter toolbar, table card, badge, upload | Tự kích hoạt khi viết UI; hoặc @ mention skill |
+| [`bks-fe-list-url-state`](.agents/skills/bks-fe-list-url-state/SKILL.md) | List page: filter + pagination đồng bộ URL (`useSearchParams`), reload/share link/Back-Forward giữ state | *"sync filter với URL"*, *"list url state"*, refactor list page |
+| [`bks-fe-create-tc-component`](.agents/skills/bks-fe-create-tc-component/SKILL.md) | Unit/integration test Vitest: render, validation, hook, MSW — **chỉ** file trong `__tests__/` | *"create-tc-component"*, *"viết unit test"*, *"tạo vitest"* |
+| [`bks-fe-create-tc-flow`](.agents/skills/bks-fe-create-tc-flow/SKILL.md) | E2E Playwright: redirect, auth guard, cookie, navigation — **chỉ** file trong `e2e/` | *"create-tc-flow"*, *"viết testcase flow"*, *"tạo test e2e"* |
+
+#### Quan hệ giữa các skill Frontend
 
 ```
-cd existing_repo
-git remote add origin https://gitv2.bekisoft.com/cuongnv/ai_lab.git
-git branch -M main
-git push -uf origin main
+bks-fe-implement-feature  (orchestrator — bắt đầu từ đây)
+    ├── bks-fe-ds-sdk-consumer      (UI/UX — mọi màn hình)
+    ├── bks-fe-api-integration      (API — bắt buộc trước khi viết hook/repository)
+    ├── bks-fe-list-url-state       (list page có filter/pagination + URL)
+    ├── bks-fe-create-tc-component  (Vitest — component/logic)
+    └── bks-fe-create-tc-flow       (Playwright — flow/URL/cookie)
 ```
 
-## Integrate with your tools
+#### Chi tiết từng skill
 
-* [Set up project integrations](https://gitv2.bekisoft.com/cuongnv/ai_lab/-/settings/integrations)
+**`bks-fe-implement-feature`** — Single source of truth cho feature frontend.
 
-## Collaborate with your team
+- Phân loại **độ phức tạp**: Simple / Standard / Complex.
+- Phân loại **flow**: A (form only), B (list only), C (full CRUD), D (detail/read).
+- **i18n bắt buộc** — không hardcode string.
+- Create/edit mặc định = **modal dialog** (`FormDialogContent`, max-width 720px).
+- Pre-merge: `pnpm lint`, checklist 🔴/🟡/🟢.
+- Tham chiếu mẫu: `frontend/features/auth/` (feature hiện có); list + URL sync theo skill → pattern `*-list-query.ts`, `use-*.ts`, `*-filters-toolbar.tsx` (skill tham chiếu `features/users/`).
 
-* [Invite team members and collaborators](https://docs.gitlab.com/user/project/members/)
-* [Create a new merge request](https://docs.gitlab.com/user/project/merge_requests/creating_merge_requests/)
-* [Automatically close issues from merge requests](https://docs.gitlab.com/user/project/issues/managing_issues/#closing-issues-automatically)
-* [Enable merge request approvals](https://docs.gitlab.com/user/project/merge_requests/approvals/)
-* [Set auto-merge](https://docs.gitlab.com/user/project/merge_requests/auto_merge/)
+**`bks-fe-api-integration`** — Luồng API đầy đủ cho một feature.
 
-## Test and Deploy
+- Repository: abstract + `http-*` adapter (+ optional mock/factory).
+- `validateResponse()` **trước** Zod parse (bắt HTTP 200 fake-error / 422).
+- Hook: `create` / `update` / `delete` / `fetchList`; 422 → `mapBackendErrors`, **không** toast.
+- Form: truyền `setError`; **không** dùng `useEffect` + `reset()` sync `defaultValues`.
+- Dialog: `{open && <FeatureForm ... />}` để unmount/remount form.
 
-Use the built-in continuous integration in GitLab.
+**`bks-fe-ds-sdk-consumer`** — Chuẩn UI với Design System SDK.
 
-* [Get started with GitLab CI/CD](https://docs.gitlab.com/ci/quick_start/)
-* [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/user/application_security/sast/)
-* [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/topics/autodevops/requirements/)
-* [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/user/clusters/agent/)
-* [Set up protected environments](https://docs.gitlab.com/ci/environments/protected_environments/)
+- **Đọc 9 file references** trước khi viết UI (setup, typography, component-rules, layout, filter-toolbar, pagination, badge, component-detection, wireframe).
+- Ưu tiên SDK exports; `size="default"` trừ khi spec yêu cầu khác.
+- List: filter toolbar (không stack dọc); table card `overflow-hidden border-border p-0 gap-0`.
+- Form: `Field` + `FieldLabel` + `FieldContent`; scroll container có `custom-scrollbar`.
 
-***
+**`bks-fe-list-url-state`** — URL là single source of truth cho list.
 
-# Editing this README
+- Param search = `q` (map `filters.search` trong code).
+- Omit giá trị mặc định khỏi URL; `router.replace` + `{ scroll: false }`.
+- Debounce search 300ms; Zod parse URL → safe defaults khi invalid.
+- File mẫu (theo skill): `*-list-query.ts`, `use-*.ts`, `*-filters-toolbar.tsx` trong `frontend/features/<feature>/`.
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
+**`bks-fe-create-tc-component`** — Vitest (component/logic).
 
-## Suggestions for a good README
+- **Scope cứng:** chỉ `__tests__/` — **cấm** `e2e/` và `*.spec.ts`.
+- Tối thiểu **≥ 10 VT** (logic) + **≥ 10 VT-DS** (design token) = **≥ 20 TC** mỗi lần chạy.
+- Domain: render, validation, loading, store/MSW, accessibility — **không** assert URL/cookie thật.
+- Chạy: `pnpm test:unit __tests__/tests/<domain>/<feature>.test.tsx`
 
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+**`bks-fe-create-tc-flow`** — Playwright E2E (flow thật).
 
-## Name
-Choose a self-explaining name for your project.
+- **Scope cứng:** chỉ `e2e/` — **cấm** `__tests__/` và `*.test.tsx`.
+- Tối thiểu **≥ 10 TC** (PW-01..N): redirect, auth guard, cookie, API intercept.
+- Recon DOM trước khi viết selector; Page Object Model.
+- Chạy: `pnpm test:e2e e2e/tests/<domain>/<feature>.spec.ts`
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+> **Phân chia test Vitest vs Playwright:** Vitest = component/logic/state; Playwright = navigation/URL/cookie/auth guard. Hai skill **không trùng** TC — dùng `__tests__/coverage-maps/<domain>.<feature>.md` để theo dõi.
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+#### Lệnh kiểm tra Frontend thường dùng
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+| Lệnh | Mục đích |
+|------|----------|
+| `cd frontend && pnpm lint` | Lint trước merge |
+| `cd frontend && pnpm build` | Build production |
+| `pnpm test:unit` | Vitest unit/integration |
+| `pnpm test:e2e` | Playwright E2E |
+| `pnpm quality:check` | Typecheck + lint + format + test |
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+---
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+## 💡 Lưu Ý Quan Trọng
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+1.  **Luôn bắt đầu từ Workflow:** Đừng yêu cầu AI "viết code ngay". Hãy đi đúng quy trình: **Draft -> Requirements -> Tasks -> Execution**.
+2.  **Double Documentation:** Mọi thay đổi logic phải được cập nhật vào cả code và tài liệu Markdown trong `docs/logic/`.
+3.  **Kiểm tra Tasks:** Trước khi chạy `/execute-xxxx-task` (backend) hoặc skill `bks-fe-*` (frontend), hãy đảm bảo file task có đầy đủ thông tin (workflow/skill cần dùng, flow A/B/C/D, data mode http/mock).
+4.  **Review Plan:** Luôn đọc kỹ "Implementation Plan" của AI trước khi cho phép nó sửa đổi file.
+5.  **Frontend — @ mention skill:** Khi làm FE, @ skill cụ thể (ví dụ `@.agents/skills/bks-fe-implement-feature`) giúp AI nạp đúng tiêu chuẩn ngay từ đầu.
+6.  **Test — đúng skill, đúng thư mục:** Vitest (`bks-fe-create-tc-component` → `__tests__/`), Playwright (`bks-fe-create-tc-flow` → `e2e/`). Không trộn hai loại trong cùng một skill.
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+Chúc bạn xây dựng dự án Beki AI hiệu quả! 🚀

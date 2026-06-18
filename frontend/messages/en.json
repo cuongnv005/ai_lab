@@ -1,0 +1,834 @@
+{
+  "PostDetail": {
+    "postHeader": {
+      "anonymous": "Anonymous",
+      "author": "Author",
+      "views": "{count} views"
+    },
+    "articleBody": {
+      "copySuccess": "Copied code",
+      "copyError": "Could not copy",
+      "copied": "Copied",
+      "copy": "Copy"
+    },
+    "authorWidget": {
+      "newMember": "New member",
+      "today": "Today",
+      "daysAgo": "{days} days ago",
+      "monthsAgo": "{months} months ago",
+      "yearsAgo": "{years} years ago",
+      "joined": "Joined:",
+      "postsCount": "Total posts:",
+      "likesCount": "Total likes:"
+    },
+    "postActions": {
+      "copySuccess": "Link copied to clipboard",
+      "copyError": "Could not copy link",
+      "loginToLike": "Please login to like",
+      "likeError": "Could not like post",
+      "like": "Like",
+      "likes": "Likes",
+      "share": "Share",
+      "comment": "Comment",
+      "comments": "Comments",
+      "report": "Report",
+      "alreadyReported": "Already reported"
+    },
+    "comments": {
+      "deleteConfirmTitle": "Delete comment?",
+      "deleteConfirmDesc": "Are you sure you want to delete this comment? This action cannot be undone.",
+      "cancel": "Cancel",
+      "delete": "Delete",
+      "deleting": "Deleting...",
+      "reply": "Reply",
+      "report": "Report",
+      "alreadyReported": "Already reported",
+      "placeholder": "Write your comment...",
+      "replyPlaceholder": "Reply to {name}...",
+      "send": "Send",
+      "sending": "Sending...",
+      "title": "Comments",
+      "loginPrompt": "Login to join the discussion",
+      "loginBtn": "Login",
+      "noComments": "No comments yet",
+      "firstComment": "Be the first to comment!",
+      "loading": "Loading...",
+      "loadMore": "Load more comments",
+      "hide": "Show less",
+      "showMore": "Show more"
+    },
+    "report": {
+      "title": "Report Content",
+      "reasonLabel": "Select a reason",
+      "detailLabel": "Additional details",
+      "detailPlaceholder": "Please provide more details (minimum 10 characters)...",
+      "detailMin": "Minimum 10 characters required",
+      "cancel": "Cancel",
+      "submit": "Submit Report",
+      "submitting": "Submitting...",
+      "errorReason": "Please select a reason",
+      "errorLength": "Details must be at least 10 characters long",
+      "errorMaxLength": "Details must be at most 1000 characters long",
+      "success": "Report submitted successfully",
+      "errorSubmit": "Could not submit report",
+      "reasons": {
+        "spam": "Spam or misleading",
+        "harassment": "Harassment or bullying",
+        "hate_speech": "Hate speech",
+        "misinformation": "Misinformation",
+        "inappropriate": "Inappropriate content",
+        "other": "Other"
+      }
+    },
+    "similarPosts": {
+      "title": "Similar Posts",
+      "readMore": "Read more"
+    }
+  },
+  "Footer": {
+    "description": "Community sharing prompts, tutorials and top AI tech guides. Join discussions and develop your AI skills.",
+    "explore": "Explore",
+    "home": "Home",
+    "forum": "Discussion Forum",
+    "rules": "Rules",
+    "terms": "Terms of Use",
+    "privacy": "Privacy Policy"
+  },
+  "CategoryPage": {
+    "errorTitle": "Error loading data",
+    "errorMessage": "Please try again later or contact the administrator.",
+    "backToForum": "Back to forum",
+    "categoryDiscussion": "Category Discussion",
+    "categoryFallback": "Category",
+    "descriptionFallback": "Join in writing posts, asking questions, sharing prompts, or discussing this tech topic.",
+    "writePost": "Write Discussion",
+    "emptyTitle": "No discussions in this category yet.",
+    "emptyDescription": "Be the first to start a conversation!"
+  },
+  "TagPage": {
+    "errorTitle": "Error loading data",
+    "errorMessage": "Please try again later or contact the administrator.",
+    "back": "Back",
+    "tagLabel": "Topic Tag",
+    "subtitle": "List of posts tagged with {tagSlug}.",
+    "totalPosts": " ({count} posts)",
+    "emptyTitle": "No posts found with tag {tagSlug}.",
+    "emptyDescription": "Explore other topics!"
+  },
+  "PostDetailPage": {
+    "errorTitle": "Error loading post",
+    "backToHome": "Back to home",
+    "pageTitle": "{title} | AI Lab",
+    "fallbackPageTitle": "Post Detail | AI Lab",
+    "baseTitle": "AI Lab",
+    "back": "Back",
+    "editPost": "Edit Post"
+  },
+  "Header": {
+    "home": "Home",
+    "forum": "Discussion Forum",
+    "searchPlaceholder": "Search posts...",
+    "myProfile": "My Profile",
+    "myPosts": "My Posts",
+    "logout": "Logout",
+    "login": "Login",
+    "register": "Register",
+    "loggingOut": "Logging out",
+    "pleaseWait": "Please wait a moment...",
+    "dashboard": "Dashboard"
+  },
+  "HomePage": {
+    "title": "Zustand + TanStack Query Setup",
+    "description": "This project is now configured with global state management (Zustand) and server-state fetching (TanStack Query).",
+    "docs": "Documentation",
+    "errorTitle": "Error loading data",
+    "errorMessage": "Please try again later or contact the administrator.",
+    "filterByAuthor": "Filtering by author",
+    "postsByAuthor": "Posts by @{name}",
+    "clearFilter": "Clear filter",
+    "noAuthorPosts": "This author has no posts yet.",
+    "backToHome": "Back to home",
+    "searchResults": "Search Results",
+    "searchFor": "Search for \"{search}\"",
+    "noSearchResults": "No posts found containing \"{search}\".",
+    "updatingFeatured": "Updating featured posts...",
+    "latestPosts": "Latest Posts",
+    "noPosts": "No posts have been published yet.",
+    "hotCategories": "Hot Categories",
+    "loadingCategories": "Loading categories...",
+    "hotPosts": "Hot Posts",
+    "noHotPosts": "No featured posts yet.",
+    "topAuthors": "Top Authors",
+    "postsCount": "{count} posts",
+    "noTopAuthors": "No top authors yet.",
+    "admin": "Admin",
+    "byAuthor": "by {name}",
+    "viewsCount": "{count} views"
+  },
+  "CreatePostPage": {
+    "title": "Create New Discussion",
+    "submit": "Publish",
+    "submitting": "Publishing...",
+    "success": "Post created successfully",
+    "error": "Failed to create post"
+  },
+  "CreatePostPage": {
+    "backToList": "Back to post list",
+    "title": "Create new post",
+    "description": "Post new knowledge sharing to the forum.",
+    "loadingCategories": "Loading categories...",
+    "initializingForm": "Initializing form..."
+  },
+  "EditPostPage": {
+    "backToList": "Back to post list",
+    "title": "Edit post",
+    "description": "Update your post content.",
+    "loadingPost": "Loading post information...",
+    "notFound": "Post not found or does not exist.",
+    "backListButton": "Back to list",
+    "errLogin": "Please login to update post",
+    "errPermission": "You do not have permission to edit this post",
+    "errUpdate": "Failed to update post"
+  },
+  "ForumPage": {
+    "errorTitle": "Error loading data",
+    "errorMessage": "Please try again later or contact the administrator.",
+    "title": "Discussion Forum",
+    "description": "Select a category below to start viewing and participating in discussions.",
+    "postsCount": "Posts:",
+    "expand": "Expand",
+    "collapse": "Collapse",
+    "repliesCount": "Replies: {count}",
+    "noTopics": "No topics in this category yet.",
+    "viewAll": "view all topics",
+    "noCategories": "No discussion categories have been created yet."
+  },
+  "Common": {
+    "loading": "Loading...",
+    "logo": "BKS",
+    "userName": "User Name",
+    "userEmail": "user@example.com",
+    "switchLanguage": "Switch Language",
+    "toggleTheme": "Toggle theme",
+    "switchToLight": "Switch to light mode",
+    "switchToDark": "Switch to dark mode",
+    "cancel": "Cancel",
+    "close": "Close",
+    "create": "Create",
+    "save": "Save",
+    "search": "Search",
+    "prev": "Previous",
+    "next": "Next",
+    "back": "Back",
+    "saving": "Saving...",
+    "uploadAvatar": "Upload Avatar",
+    "avatarDescription": "JPG, PNG or WebP. Max 2MB.",
+    "chooseImage": "Choose Image",
+    "removeImage": "Remove Image",
+    "uploading": "Uploading...",
+    "uploadSuccess": "Upload successfully",
+    "uploadFailed": "Upload failed",
+    "fileTooLarge": "File is too large (Max 2MB)",
+    "invalidFileType": "Unsupported format",
+    "replies": "Replies",
+    "views": "Views",
+    "at": "at {date}"
+  },
+  "Api": {
+    "errors": {
+      "400": "Invalid request. Please check again.",
+      "401": "Session expired. Please log in again.",
+      "403": "You don't have permission to perform this action.",
+      "404": "Requested data not found.",
+      "422": "The given data was invalid.",
+      "500": "System is busy. Please try again later.",
+      "default": "An error occurred. Please try again later."
+    }
+  },
+  "Network": {
+    "offline": "Internet connection lost. Please check your connection.",
+    "online": "Internet reconnected. Reloading data..."
+  },
+  "validation": {
+    "required": "{field} is required",
+    "email": "{field} must be a valid email",
+    "minLength": "{field} must be at least {min} characters",
+    "maxLength": "{field} must not exceed {max} characters"
+  },
+  "action": {
+    "save": "Save",
+    "saving": "Saving...",
+    "cancel": "Cancel",
+    "create": "Create",
+    "edit": "Edit",
+    "update": "Update",
+    "publish": "Publish",
+    "delete": "Delete",
+    "search": "Search",
+    "errorTitle": "Error",
+    "refresh": "Try again"
+  },
+  "UserProfilePage": {
+    "loadingProfile": "Loading profile...",
+    "userNotFound": "User not found!",
+    "updateSuccess": "Profile updated successfully!",
+    "updateError": "Update failed. Please try again.",
+    "changeAvatar": "Change avatar",
+    "uploadAvatarTitle": "Upload Avatar",
+    "joinedFrom": "Joined from {date}",
+    "editProfile": "Edit Profile",
+    "recentPosts": "Recent Posts"
+  },
+  "menu": {
+    "dashboard": "Dashboard"
+  },
+  "ChangePassword": {
+    "trigger": "Change password",
+    "title": "Change Password",
+    "description": "Change password for your admin account.",
+    "oldPasswordLabel": "Old Password",
+    "newPasswordLabel": "New Password",
+    "confirmNewPasswordLabel": "Confirm New Password",
+    "placeholder": "••••••••",
+    "submit": "Change Password",
+    "cancel": "Cancel",
+    "success": "Password changed successfully.",
+    "errors": {
+      "oldPasswordRequired": "Old password is required",
+      "newPasswordRequired": "New password is required",
+      "newPasswordLength": "New password must be between 8 and 32 characters",
+      "newPasswordDifferent": "New password must be different from old password",
+      "confirmPasswordRequired": "Confirm new password is required",
+      "confirmPasswordMismatch": "Passwords do not match"
+    }
+  },
+  "Login": {
+    "title": "Welcome back",
+    "subtitle": "Sign in to continue",
+    "emailLabel": "Email / Username",
+    "emailPlaceholder": "Enter email or username",
+    "passwordLabel": "Password",
+    "passwordPlaceholder": "••••••••",
+    "forgotPassword": "Forgot password?",
+    "submit": "Sign In",
+    "noAccount": "Don't have an account?",
+    "signUp": "Sign up now",
+    "errors": {
+      "emailRequired": "Email / Username is required",
+      "passwordRequired": "Password is required",
+      "passwordMinLength": "Password must be at least 6 characters"
+    }
+  },
+  "Branding": {
+    "systemName": "Enterprise Management System",
+    "systemDescription": "Comprehensive solution to optimize operational processes and enhance organizational performance."
+  },
+  "Register": {
+    "title": "Create Account",
+    "subtitle": "Fill in your information to get started",
+    "nameLabel": "Full Name",
+    "namePlaceholder": "Enter your full name...",
+    "emailLabel": "Email",
+    "emailPlaceholder": "your@email.com",
+    "passwordLabel": "Password",
+    "confirmPasswordLabel": "Confirm Password",
+    "provinceLabel": "Province / City",
+    "provincePlaceholder": "Select province/city",
+    "noProvince": "No provinces available",
+    "wardLabel": "Ward / District",
+    "wardPlaceholder": "Select ward/district",
+    "wardDisabled": "Select province/city first",
+    "noWard": "No wards available",
+    "addressLabel": "Detailed Address",
+    "addressPlaceholder": "House number, street name...",
+    "referralLabel": "Referral Code",
+    "referralOptional": "(Optional)",
+    "referralPlaceholder": "Enter referral code if you have one",
+    "submit": "Create Account",
+    "haveAccount": "Already have an account?",
+    "login": "Sign In",
+    "brandingTitle": "Join the System",
+    "brandingDescription": "Start your journey to optimize and grow your business.",
+    "errors": {
+      "nameRequired": "Full name is required",
+      "emailRequired": "Email is required",
+      "emailInvalid": "Invalid email address",
+      "passwordRequired": "Password is required",
+      "passwordMinLength": "Password must be at least 8 characters",
+      "confirmPasswordRequired": "Confirm password is required",
+      "passwordMismatch": "Passwords do not match",
+      "generic": "An error occurred. Please try again."
+    }
+  },
+  "ForgotPassword": {
+    "title": "Forgot Password?",
+    "subtitle": "Enter your email to receive OTP verification code",
+    "emailLabel": "Email",
+    "emailPlaceholder": "name@company.com",
+    "submit": "Send OTP Code",
+    "brandingTitle": "Account Recovery",
+    "brandingDescription": "Enter your email to receive an OTP verification code. We will help you reset your password securely.",
+    "successTitle": "OTP Sent!",
+    "successMessage": "Check your email {email} to receive the verification code.",
+    "resendCode": "Resend Code",
+    "backToLogin": "Back to Sign In",
+    "rememberPassword": "Remember your password?",
+    "successLabel": "Password reset successfully!",
+    "successDesc": "Your password has been updated successfully. Please sign in again.",
+    "back": "Back",
+    "otpTitle": "Enter Verification Code",
+    "otpSubtitle": "We have sent a 6-digit OTP code to {email}",
+    "otpLabel": "OTP Code",
+    "otpPlaceholder": "Enter 6-digit OTP code",
+    "verifyOtpSubmit": "Verify OTP",
+    "newPasswordTitle": "New Password",
+    "newPasswordSubtitle": "Please enter a more secure new password",
+    "passwordLabel": "New Password",
+    "confirmPasswordLabel": "Confirm New Password",
+    "passwordPlaceholder": "••••••••",
+    "resetPasswordSubmit": "Update Password",
+    "errors": {
+      "emailRequired": "Email is required",
+      "sendFailed": "Failed to send OTP. Please check your email and try again.",
+      "otpRequired": "OTP code is required",
+      "otpInvalid": "OTP code is incorrect or has expired",
+      "passwordRequired": "Password is required",
+      "passwordMinLength": "Password must be at least 8 characters",
+      "passwordMismatch": "Confirm password does not match",
+      "resetFailed": "Failed to reset password. Please try again."
+    }
+  },
+  "Post": {
+    "validation": {
+      "titleMin": "Title must be at least 5 characters",
+      "titleMax": "Title cannot exceed 255 characters",
+      "categoryRequired": "Please select a category",
+      "contentMin": "Content must be at least 10 characters",
+      "tagMax": "Each tag must not exceed 20 characters"
+    },
+    "fields": {
+      "title": "Title",
+      "titlePlaceholder": "Enter post title...",
+      "category": "Category",
+      "categoryPlaceholder": "Select a category...",
+      "tags": "Tags",
+      "tagsPlaceholder": "Type and press Enter...",
+      "content": "Content",
+      "savingDraft": "Saving draft...",
+      "lastSaved": "Auto-saved at {time}"
+    },
+    "editor": {
+      "insertPreview": "Insert Preview",
+      "insertSimilar": "Insert Similar Posts",
+      "preview": "Preview",
+      "edit": "Edit",
+      "tagsPlaceholder": "Type and press Enter...",
+      "uploadImage": "Upload Image"
+    },
+    "draft": {
+      "autoSaved": "Auto-saved at {time}",
+      "autoSaveFailed": "Failed to auto-save draft",
+      "restoreTitle": "Restore Draft?",
+      "restorePrompt": "You have a draft for this category. Do you want to restore it?",
+      "restore": "Restore"
+    },
+    "dashboard": {
+      "newPost": "Create New Post",
+      "myPosts": "My Posts",
+      "managePosts": "Manage your forum posts.",
+      "searchPlaceholder": "Search posts by title...",
+      "loadingPosts": "Loading post list...",
+      "noPosts": "You don't have any posts yet or no matching posts found.",
+      "firstPost": "Write your first post",
+      "colTitle": "Title",
+      "colComments": "Comments",
+      "colLikes": "Likes",
+      "colStatus": "Status",
+      "colActions": "Actions",
+      "promoteTitle": "Promote to homepage",
+      "editTitle": "Edit post",
+      "deleteTitle": "Delete post",
+      "deleteConfirmTitle": "Delete post?",
+      "deleteConfirmDesc": "Are you sure you want to delete this post? This action cannot be undone.",
+      "cancel": "Cancel",
+      "delete": "Delete",
+      "prev": "Prev",
+      "next": "Next",
+      "pageOf": "Page {page} / {total}",
+      "statusPending": "Pending",
+      "statusPublished": "Published",
+      "statusRejected": "Rejected",
+      "rejectReason": "Reject reason:",
+      "statusApproved": "Approved",
+      "statusDeleted": "Deleted",
+      "statusUnknown": "Unknown"
+    }
+  },
+
+  "profile": {
+    "personalInfo": "Personal Information",
+    "name": "Full Name",
+    "dob": "Date of Birth",
+    "hometown": "Hometown",
+    "gender": "Gender",
+    "bio": "About Me",
+    "noBio": "No bio yet.",
+    "editProfile": "Edit Profile",
+    "selectGender": "-- Select Gender --",
+    "male": "Male",
+    "female": "Female",
+    "other": "Other",
+    "bioPlaceholder": "Write something about yourself...",
+    "noPosts": "This user has no posts.",
+    "dobMaxError": "Date of birth cannot be in the future"
+  },
+  "TermsPage": {
+    "title": "Terms of Use",
+    "updated": "Last updated: June 15, 2026. Please read the terms carefully before using our service.",
+    "contactTitle": "Questions about terms?",
+    "contactDesc": "If you have any questions regarding these Terms of Use, please send your feedback to our support email at ",
+    "sections": {
+      "1": {
+        "title": "1. Acceptance of Terms",
+        "content": "By accessing and using AI_Lab services, you agree to be bound by the following terms, conditions, and applicable laws. If you do not agree with any part of these terms, please stop using the website immediately."
+      },
+      "2": {
+        "title": "2. Account and Security",
+        "content": "When registering an account at AI_Lab, you are responsible for providing accurate and up-to-date information. You are solely responsible for keeping your password secure and for all activities that occur under your account. Please notify the administrator immediately if you suspect unauthorized use of your account."
+      },
+      "3": {
+        "title": "3. Intellectual Property Rights",
+        "content": "All content posted on the website, including articles, prompts, images, source code, and related documents, belongs to the author or AI_Lab. You are granted a non-exclusive license for personal, non-commercial use. Any copying, distribution, or commercialization of content without the owner's consent is strictly prohibited."
+      },
+      "4": {
+        "title": "4. User Conduct Guidelines",
+        "content": "Users are not allowed to post content that violates the law, morals, defames, harasses, or infringes on the rights of others. All forms of spam, spreading malicious code, or taking actions that negatively affect the performance of the system are strictly prohibited."
+      },
+      "5": {
+        "title": "5. Limitation of Liability",
+        "content": "The services and information on AI_Lab are provided 'as is' without any warranty. We are not responsible for any direct or indirect damages arising from the use of the website or the information referenced on the system."
+      },
+      "6": {
+        "title": "6. Changes to Terms",
+        "content": "AI_Lab reserves the right to modify and update these terms at any time without prior notice. Changes will take effect as soon as they are posted. Your continued use of the service after the terms are updated means you agree to those changes."
+      }
+    }
+  },
+  "PrivacyPage": {
+    "title": "Privacy Policy",
+    "updated": "Last updated: June 15, 2026. AI_Lab always strives to protect your data and personal information.",
+    "contactTitle": "Need more help?",
+    "contactDesc": "For any questions, feedback, or complaints regarding this Privacy Policy, please contact us via email: ",
+    "sections": {
+      "1": {
+        "title": "1. Information We Collect",
+        "content": "We collect information when you register an account, submit articles, comment, or participate in other activities. Information includes: username, email address, avatar, and your IP address. This information helps improve the user experience on the system."
+      },
+      "2": {
+        "title": "2. How We Use Information",
+        "content": "The collected information is used to maintain, operate, and enhance the quality of AI_Lab's services. We may use your email to send technical update notifications, account-related notices, or newsletters of featured articles if you subscribe."
+      },
+      "3": {
+        "title": "3. Information Protection and Storage",
+        "content": "All your personal information is stored on secure servers. We apply advanced security measures (such as SSL/TLS encryption) to prevent unauthorized access, modification, or disclosure of your personal information."
+      },
+      "4": {
+        "title": "4. Sharing Information with Third Parties",
+        "content": "AI_Lab commits NOT to sell, trade, or rent your personal information to any third party for commercial purposes. We only share information when clearly required by law or to protect the safety of the entire community."
+      },
+      "5": {
+        "title": "5. Cookies and Tracking Technologies",
+        "content": "We use cookies to save interface preferences, analyze traffic, and maintain your login state. You can choose to disable cookies in your browser settings; however, some features may not function optimally."
+      },
+      "6": {
+        "title": "6. Your Rights Regarding Personal Information",
+        "content": "You have the right to access, edit, or request the deletion of your personal information directly through the account management page. If there are any issues in exercising this right, please contact our support team directly."
+      }
+    }
+  },
+  "ImageUpload": {
+    "invalidImage": "Please select a valid image file",
+    "missingApiKey": "Configuration error: Missing image upload API key",
+    "uploadSuccess": "Image uploaded successfully",
+    "uploadError": "An error occurred while uploading the image",
+    "networkError": "Connection error while uploading the image",
+    "copiedLink": "Copied image link",
+    "title": "Upload Image",
+    "desc": "Drag and drop an image here to upload and get an embed link for the post.",
+    "uploading": "Uploading...",
+    "clickOrDrag": "Click or drag & drop image",
+    "successText": "Uploaded successfully!"
+  },
+  "Admin": {
+    "sidebar": {
+      "dashboard": "Dashboard",
+      "approval": "Approval",
+      "reports": "Reports",
+      "users": "Users",
+      "posts": "Posts",
+      "categories": "Categories",
+      "brandTitle": "Admin",
+      "brandSubtitle": "Dashboard",
+      "adminRole": "Admin",
+      "moderatorRole": "Moderator"
+    },
+    "layout": {
+      "accessDenied": "Access Denied",
+      "noPermission": "You do not have permission to access the Admin Panel.",
+      "noPermissionPage": "You do not have permission to access this page.",
+      "backToHome": "Back to Home",
+      "goToApprovalQueue": "Go to Approval Queue",
+      "backToSite": "Back to site"
+    },
+    "dashboard": {
+      "title": "System Overview",
+      "subtitle": "System overview and data analysis",
+      "periods": {
+        "today": "Today",
+        "7days": "7 Days",
+        "30days": "30 Days",
+        "year": "This Year"
+      },
+      "stats": {
+        "totalUsers": "Total Users",
+        "totalPosts": "Total Posts",
+        "pendingPosts": "Pending Approval",
+        "totalViews": "Total Views",
+        "newPosts": "New Posts",
+        "newUsers": "New Users",
+        "newComments": "New Comments",
+        "totalComments": "Total Comments"
+      },
+      "chart": {
+        "title": "Activity Chart",
+        "noData": "No chart data available for this period.",
+        "types": {
+          "posts": "posts",
+          "users": "users",
+          "views": "views",
+          "comments": "comments"
+        }
+      },
+      "topPosts": {
+        "title": "Featured Posts",
+        "noData": "No data available.",
+        "hideSuccess": "Post hidden successfully.",
+        "hideError": "An error occurred while hiding the post.",
+        "hideConfirmTitle": "Hide Post",
+        "hideConfirmDesc": "Are you sure you want to hide the post \"{title}\" from the public forum?"
+      },
+      "topUsers": {
+        "title": "Active Users",
+        "noData": "No data available.",
+        "statsCount": "{posts} posts · {comments} comments"
+      }
+    },
+    "approval": {
+      "title": "Approval Queue",
+      "subtitle": "Review and approve or reject pending posts",
+      "tabs": {
+        "pending": "Pending",
+        "published": "Approved",
+        "rejected": "Rejected"
+      },
+      "searchPlaceholder": "Search posts...",
+      "filter": "Filter",
+      "noPending": "No posts pending approval",
+      "noPublished": "No approved posts",
+      "noRejected": "No rejected posts",
+      "table": {
+        "title": "Title",
+        "author": "Author",
+        "category": "Category",
+        "createdAt": "Created At",
+        "rejectReason": "Reject Reason",
+        "actions": "Actions",
+        "view": "View"
+      },
+      "rejectMinLength": "Reason must be at least 10 characters.",
+      "preview": "Preview",
+      "approve": "Approve",
+      "reject": "Reject",
+      "rejectTitle": "Reject Post",
+      "rejectDesc": "Provide a reason to reject the post \"{title}\"",
+      "rejectPlaceholder": "Enter rejection reason (minimum 10 characters)...",
+      "totalPosts": "Total: {total} posts",
+      "toastApproveSuccess": "Post approved successfully.",
+      "toastRejectSuccess": "Post rejected successfully."
+    },
+    "categories": {
+      "title": "Categories",
+      "subtitle": "Manage system post categories",
+      "addCategory": "Add Category",
+      "noCategories": "No categories available",
+      "createFirst": "Create first category",
+      "table": {
+        "name": "Category Name",
+        "slug": "Slug",
+        "description": "Description",
+        "posts": "Posts",
+        "actions": "Actions"
+      },
+      "form": {
+        "nameLabel": "Category Name",
+        "nameRequired": "Category name is required.",
+        "slugLabel": "Slug",
+        "slugRequired": "Slug is required.",
+        "descriptionLabel": "Description",
+        "descriptionPlaceholder": "Optional description...",
+        "createTitle": "Add Category",
+        "createDesc": "Create a new post category.",
+        "editTitle": "Edit Category",
+        "editDesc": "Update category \"{name}\" information",
+        "moveTitle": "Move posts to category:"
+      },
+      "delete": {
+        "title": "Delete Category",
+        "confirm": "Are you sure you want to delete category \"{name}\"?",
+        "warnHasPosts": "This category currently contains {count} posts. You need to move all posts to another category before deleting.",
+        "movePlaceholder": "Select target category...",
+        "moveError": "Please select a category to move the posts.",
+        "moveAndDelete": "Move and Delete"
+      }
+    },
+    "posts": {
+      "title": "Posts",
+      "subtitle": "Manage all posts in the system",
+      "searchPlaceholder": "Search posts...",
+      "status": {
+        "all": "All Statuses",
+        "pending": "Pending",
+        "published": "Published",
+        "rejected": "Rejected",
+        "approved": "Approved",
+        "deleted": "Hidden",
+        "unknown": "Unknown"
+      },
+      "filter": "Search",
+      "noPosts": "No posts found",
+      "table": {
+        "title": "Title",
+        "author": "Author",
+        "category": "Category",
+        "status": "Status",
+        "views": "Views",
+        "createdAt": "Created At",
+        "actions": "Actions"
+      },
+      "actions": {
+        "preview": "Preview",
+        "edit": "Edit Post",
+        "show": "Show Post",
+        "hide": "Hide Post",
+        "delete": "Delete Post"
+      },
+      "deleteConfirm": {
+        "title": "Delete Post",
+        "desc": "Are you sure you want to permanently delete the post \"{title}\" from the system? This action cannot be undone."
+      },
+      "hideConfirm": {
+        "title": "Hide Post",
+        "desc": "Are you sure you want to hide the post \"{title}\" from the forum?"
+      },
+      "restoreConfirm": {
+        "title": "Show Post",
+        "desc": "Are you sure you want to display the post \"{title}\" back on the forum?"
+      },
+      "totalPosts": "Total: {total} posts"
+    },
+    "reports": {
+      "title": "Reports",
+      "subtitle": "Manage content violation reports from members",
+      "status": {
+        "all": "All Statuses",
+        "pending": "Pending",
+        "resolved": "Resolved",
+        "dismissed": "Dismissed"
+      },
+      "type": {
+        "all": "All Types",
+        "post": "Post",
+        "comment": "Comment"
+      },
+      "clearFilters": "Clear filters",
+      "noReports": "No reports found",
+      "table": {
+        "reporter": "Reporter",
+        "type": "Type",
+        "reason": "Reason",
+        "status": "Status",
+        "createdAt": "Created At",
+        "actions": "Actions"
+      },
+      "actions": {
+        "view": "View details",
+        "resolve": "Resolve (Delete content)",
+        "dismiss": "Dismiss report"
+      },
+      "detail": {
+        "title": "Report #{id}",
+        "subtitle": "Reported by {reporter} · {date}",
+        "reportedContent": "Reported content ({type})",
+        "reason": "Violation reason",
+        "noContent": "Content not available"
+      },
+      "resolveConfirm": {
+        "title": "Resolve Violation Report",
+        "desc": "Are you sure you want to resolve this report? This action will delete and hide the reported content ({type}) from the system."
+      },
+      "dismissConfirm": {
+        "title": "Dismiss Violation Report",
+        "desc": "Are you sure you want to dismiss this report? This action will keep the reported content and close this report."
+      },
+      "totalReports": "Total: {total}",
+      "toastResolveSuccess": "Report resolved and violating content deleted.",
+      "toastDismissSuccess": "Report dismissed."
+    },
+    "users": {
+      "title": "Users",
+      "subtitle": "Manage user accounts and set system permissions",
+      "searchPlaceholder": "Search users...",
+      "role": {
+        "all": "All Roles",
+        "admin": "Administrator",
+        "moderator": "Moderator",
+        "member": "Member"
+      },
+      "status": {
+        "all": "All Statuses",
+        "active": "Active",
+        "banned": "Banned"
+      },
+      "table": {
+        "name": "Name",
+        "email": "Email",
+        "role": "Role",
+        "status": "Status",
+        "joinedAt": "Joined At",
+        "actions": "Actions"
+      },
+      "actions": {
+        "viewBanReason": "View ban reason",
+        "makeAdmin": "Change to Admin",
+        "makeMod": "Change to Mod",
+        "makeMember": "Change to Member",
+        "ban": "Ban member",
+        "unban": "Unban account",
+        "delete": "Delete account"
+      },
+      "ban": {
+        "title": "Ban Account",
+        "desc": "Provide a reason to freeze the account for {name}",
+        "placeholder": "Enter ban reason...",
+        "errorMin": "Ban reason must be at least 10 characters."
+      },
+      "banReason": {
+        "title": "Ban Reason",
+        "desc": "Details of the account freeze for {name}",
+        "default": "No specific ban reason provided."
+      },
+      "totalUsers": "Total: {total} users",
+      "noUsers": "No members found."
+    }
+  }
+}

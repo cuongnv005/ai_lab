@@ -1,0 +1,57 @@
+stages:
+  - test
+
+.php_setup:
+  image: php:8.4
+  before_script:
+    - apt-get update && apt-get install -y git unzip libzip-dev libpng-dev libjpeg-dev libfreetype6-dev
+    - docker-php-ext-install pdo_mysql zip gd
+    - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+backend_format_and_test:
+  extends: .php_setup
+  stage: test
+  services:
+    - mysql:8.0
+  variables:
+    MYSQL_DATABASE: test_db
+    MYSQL_ROOT_PASSWORD: root
+    MYSQL_USER: test_user
+    MYSQL_PASSWORD: test_pass
+  cache:
+    key: "${CI_COMMIT_REF_SLUG}-backend-composer-v2"
+    paths:
+      - backend/vendor/
+    policy: pull-push
+  before_script:
+    - !reference [.php_setup, before_script]
+    - cd backend
+    - composer install --no-interaction --prefer-dist --optimize-autoloader
+    - cp .env.example .env
+    - php artisan key:generate
+    - php artisan migrate --seed
+  script:
+    - php artisan code:format --check
+    - php artisan test
+  rules:
+    - changes:
+        - backend/**
+
+# frontend_lint:
+#   stage: test
+#   image: node:24
+#   cache:
+#     key: "${CI_COMMIT_REF_SLUG}-frontend-pnpm"
+#     paths:
+#       - frontend/node_modules/
+#       - .pnpm-store/
+#     policy: pull-push
+#   before_script:
+#     - cd frontend
+#     - npm install -g pnpm
+#     - pnpm install --frozen-lockfile
+#   script:
+#     - pnpm lint
+#   rules:
+#     - changes:
+#         - frontend/**
