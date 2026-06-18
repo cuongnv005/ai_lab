@@ -1,0 +1,825 @@
+{
+  "PostDetail": {
+    "postHeader": {
+      "anonymous": "Ẩn danh",
+      "author": "Tác giả",
+      "views": "{count} lượt xem"
+    },
+    "articleBody": {
+      "copySuccess": "Đã sao chép code",
+      "copyError": "Không thể sao chép",
+      "copied": "Đã sao chép",
+      "copy": "Sao chép"
+    },
+    "authorWidget": {
+      "newMember": "Mới tham gia",
+      "today": "Hôm nay",
+      "daysAgo": "{days} ngày trước",
+      "monthsAgo": "{months} tháng trước",
+      "yearsAgo": "{years} năm trước",
+      "joined": "Đã tham gia:",
+      "postsCount": "Số lượng bài viết:",
+      "likesCount": "Tổng số lượt thích:"
+    },
+    "postActions": {
+      "copySuccess": "Đã sao chép liên kết bài viết",
+      "copyError": "Không thể sao chép liên kết",
+      "loginToLike": "Vui lòng đăng nhập để thích bài viết",
+      "likeError": "Không thể thích bài viết",
+      "like": "Thích",
+      "likes": "Thích",
+      "share": "Chia sẻ",
+      "comment": "Bình luận",
+      "comments": "Bình luận",
+      "report": "Báo cáo",
+      "alreadyReported": "Bạn đã báo cáo rồi"
+    },
+    "comments": {
+      "deleteConfirmTitle": "Xóa bình luận?",
+      "deleteConfirmDesc": "Bạn có chắc chắn muốn xóa bình luận này không? Hành động này không thể hoàn tác.",
+      "cancel": "Hủy",
+      "delete": "Xóa",
+      "deleting": "Đang xóa...",
+      "reply": "Trả lời",
+      "report": "Báo cáo",
+      "alreadyReported": "Bạn đã báo cáo rồi",
+      "placeholder": "Viết bình luận của bạn...",
+      "replyPlaceholder": "Trả lời {name}...",
+      "send": "Gửi",
+      "sending": "Đang gửi...",
+      "title": "Bình luận",
+      "loginPrompt": "Đăng nhập để tham gia bình luận",
+      "loginBtn": "Đăng nhập",
+      "noComments": "Chưa có bình luận nào",
+      "firstComment": "Hãy là người đầu tiên bình luận!",
+      "loading": "Đang tải...",
+      "loadMore": "Xem thêm bình luận",
+      "hide": "Ẩn bớt",
+      "showMore": "Xem thêm"
+    },
+    "report": {
+      "title": "Báo cáo vi phạm",
+      "reasonLabel": "Lý do báo cáo",
+      "detailLabel": "Chi tiết báo cáo",
+      "detailPlaceholder": "Vui lòng cung cấp thêm thông tin chi tiết (ít nhất 10 ký tự)...",
+      "detailMin": "Cần ít nhất 10 ký tự",
+      "cancel": "Hủy",
+      "submit": "Gửi báo cáo",
+      "submitting": "Đang gửi...",
+      "errorReason": "Vui lòng chọn lý do",
+      "errorLength": "Nội dung chi tiết phải có ít nhất 10 ký tự",
+      "errorMaxLength": "Nội dung chi tiết không được vượt quá 1000 ký tự",
+      "success": "Đã gửi báo cáo thành công",
+      "errorSubmit": "Không thể gửi báo cáo",
+      "reasons": {
+        "spam": "Spam hoặc quảng cáo",
+        "harassment": "Quấy rối hoặc bắt nạt",
+        "hate_speech": "Ngôn từ kích động thù địch",
+        "misinformation": "Thông tin sai lệch",
+        "inappropriate": "Nội dung không phù hợp",
+        "other": "Lý do khác"
+      }
+    },
+    "similarPosts": {
+      "title": "Bài viết liên quan",
+      "readMore": "Xem thêm"
+    }
+  },
+  "Footer": {
+    "description": "Cộng đồng chia sẻ prompts, tutorials và các hướng dẫn công nghệ AI hàng đầu tại Việt Nam. Tham gia thảo luận và phát triển kỹ năng AI của bạn.",
+    "explore": "Khám phá",
+    "home": "Trang chủ",
+    "forum": "Diễn đàn thảo luận",
+    "rules": "Quy định",
+    "terms": "Điều khoản sử dụng",
+    "privacy": "Chính sách bảo mật"
+  },
+  "CategoryPage": {
+    "errorTitle": "Đã xảy ra lỗi khi tải dữ liệu",
+    "errorMessage": "Vui lòng thử lại sau hoặc liên hệ ban quản trị.",
+    "backToForum": "Quay lại diễn đàn",
+    "categoryDiscussion": "Thảo luận chuyên mục",
+    "categoryFallback": "Chuyên mục",
+    "descriptionFallback": "Tham gia viết bài, đưa ra các câu hỏi, prompts hoặc thảo luận về chủ đề công nghệ này.",
+    "writePost": "Viết bài thảo luận",
+    "emptyTitle": "Chưa có bài thảo luận nào trong danh mục này.",
+    "emptyDescription": "Hãy là người đầu tiên khơi dậy cuộc hội thoại!"
+  },
+  "TagPage": {
+    "errorTitle": "Đã xảy ra lỗi khi tải dữ liệu",
+    "errorMessage": "Vui lòng thử lại sau hoặc liên hệ ban quản trị.",
+    "back": "Quay lại",
+    "tagLabel": "Thẻ chủ đề",
+    "subtitle": "Danh sách bài viết được gắn thẻ {tagSlug}.",
+    "totalPosts": " ({count} bài viết)",
+    "emptyTitle": "Chưa có bài viết nào với thẻ {tagSlug}.",
+    "emptyDescription": "Hãy khám phá các chủ đề khác!"
+  },
+  "PostDetailPage": {
+    "errorTitle": "Đã xảy ra lỗi khi tải bài viết",
+    "backToHome": "Quay lại trang chủ",
+    "pageTitle": "{title} | AI Lab",
+    "fallbackPageTitle": "Chi tiết bài viết | AI Lab",
+    "baseTitle": "AI Lab",
+    "back": "Quay lại",
+    "editPost": "Chỉnh sửa bài viết"
+  },
+  "Header": {
+    "home": "Trang chủ",
+    "forum": "Diễn đàn thảo luận",
+    "searchPlaceholder": "Tìm kiếm bài viết...",
+    "myProfile": "Hồ sơ của tôi",
+    "myPosts": "Bài viết của tôi",
+    "logout": "Đăng xuất",
+    "login": "Đăng nhập",
+    "register": "Đăng ký",
+    "loggingOut": "Đang đăng xuất",
+    "pleaseWait": "Vui lòng chờ trong giây lát...",
+    "dashboard": "Bảng điều khiển"
+  },
+  "HomePage": {
+    "title": "Cài đặt Zustand + TanStack Query",
+    "description": "Dự án này hiện đã được cấu hình quản lý state toàn cục (Zustand) và fetch dữ liệu từ server (TanStack Query).",
+    "docs": "Tài liệu",
+    "errorTitle": "Đã xảy ra lỗi khi tải dữ liệu",
+    "errorMessage": "Vui lòng thử lại sau hoặc liên hệ quản trị viên.",
+    "filterByAuthor": "Đang lọc theo tác giả",
+    "postsByAuthor": "Bài viết của @{name}",
+    "clearFilter": "Xóa bộ lọc",
+    "noAuthorPosts": "Tác giả này chưa có bài viết nào.",
+    "backToHome": "Quay lại trang chủ",
+    "searchResults": "Kết quả tìm kiếm",
+    "searchFor": "Tìm kiếm cho từ khóa \"{search}\"",
+    "noSearchResults": "Không tìm thấy bài viết nào chứa từ khóa \"{search}\".",
+    "updatingFeatured": "Đang cập nhật các bài viết tiêu điểm...",
+    "latestPosts": "Bài viết mới nhất",
+    "noPosts": "Hiện tại chưa có bài viết nào được xuất bản.",
+    "hotCategories": "Danh mục nổi bật",
+    "loadingCategories": "Đang tải danh mục...",
+    "hotPosts": "Bài viết đang HOT",
+    "noHotPosts": "Chưa có bài viết nổi bật.",
+    "topAuthors": "Tác giả yêu thích",
+    "postsCount": "{count} bài viết",
+    "noTopAuthors": "Chưa có tác giả nổi bật.",
+    "admin": "Quản trị viên",
+    "byAuthor": "bởi {name}",
+    "viewsCount": "{count} lượt xem"
+  },
+  "CreatePostPage": {
+    "backToList": "Quay lại danh sách bài viết",
+    "title": "Viết bài mới",
+    "description": "Đăng bài chia sẻ kiến thức mới lên diễn đàn.",
+    "loadingCategories": "Đang tải danh mục...",
+    "initializingForm": "Đang khởi tạo form..."
+  },
+  "EditPostPage": {
+    "backToList": "Quay lại danh sách bài viết",
+    "title": "Chỉnh sửa bài viết",
+    "description": "Cập nhật nội dung bài viết của bạn.",
+    "loadingPost": "Đang tải thông tin bài viết...",
+    "notFound": "Không tìm thấy bài viết hoặc bài viết không tồn tại.",
+    "backListButton": "Quay lại danh sách",
+    "errLogin": "Vui lòng đăng nhập để cập nhật bài viết",
+    "errPermission": "Bạn không có quyền chỉnh sửa bài viết này",
+    "errUpdate": "Cập nhật bài viết thất bại"
+  },
+  "ForumPage": {
+    "errorTitle": "Đã xảy ra lỗi khi tải dữ liệu",
+    "errorMessage": "Vui lòng thử lại sau hoặc liên hệ ban quản trị.",
+    "title": "Diễn đàn thảo luận",
+    "description": "Chọn một danh mục bên dưới để bắt đầu xem và tham gia thảo luận.",
+    "postsCount": "Bài viết:",
+    "expand": "Mở rộng",
+    "collapse": "Thu gọn",
+    "repliesCount": "Phản hồi: {count}",
+    "noTopics": "Chưa có chủ đề nào trong danh mục này.",
+    "viewAll": "xem tất cả các chủ đề",
+    "noCategories": "Chưa có danh mục thảo luận nào được tạo."
+  },
+  "Common": {
+    "loading": "Đang tải...",
+    "logo": "BKS",
+    "userName": "Tên người dùng",
+    "userEmail": "user@example.com",
+    "switchLanguage": "Chuyển đổi ngôn ngữ",
+    "toggleTheme": "Chuyển đổi giao diện",
+    "switchToLight": "Chuyển sang chế độ sáng",
+    "switchToDark": "Chuyển sang chế độ tối",
+    "cancel": "Hủy",
+    "close": "Đóng",
+    "create": "Tạo mới",
+    "save": "Lưu",
+    "search": "Tìm kiếm",
+    "prev": "Trước",
+    "next": "Sau",
+    "back": "Quay lại",
+    "saving": "Đang lưu...",
+    "uploadAvatar": "Tải ảnh đại diện",
+    "avatarDescription": "JPG, PNG hoặc WebP. Max 2MB.",
+    "chooseImage": "Chọn ảnh",
+    "removeImage": "Xoá ảnh",
+    "uploading": "Đang tải lên...",
+    "uploadSuccess": "Upload thành công",
+    "uploadFailed": "Lỗi tải ảnh lên",
+    "fileTooLarge": "Kích thước tệp quá lớn (Tối đa 2MB)",
+    "invalidFileType": "Định dạng không được hỗ trợ",
+    "replies": "Phản hồi",
+    "views": "Lượt xem",
+    "at": "lúc {date}"
+  },
+  "Api": {
+    "errors": {
+      "400": "Yêu cầu không hợp lệ. Vui lòng kiểm tra lại.",
+      "401": "Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại.",
+      "403": "Bạn không có quyền thực hiện hành động này.",
+      "404": "Không tìm thấy dữ liệu yêu cầu.",
+      "422": "Dữ liệu nhập vào không hợp lệ.",
+      "500": "Hệ thống đang bận một chút. Bạn vui lòng thử lại sau nhé!",
+      "default": "Đã có lỗi xảy ra. Vui lòng thử lại sau."
+    }
+  },
+  "Network": {
+    "offline": "Mất kết nối Internet. Vui lòng kiểm tra lại đường truyền.",
+    "online": "Đã kết nối lại Internet. Đang tải lại dữ liệu..."
+  },
+  "validation": {
+    "required": "{field} là bắt buộc",
+    "email": "{field} phải là email hợp lệ",
+    "minLength": "{field} phải có ít nhất {min} ký tự",
+    "maxLength": "{field} không được vượt quá {max} ký tự"
+  },
+  "action": {
+    "save": "Lưu",
+    "saving": "Đang lưu...",
+    "cancel": "Hủy",
+    "create": "Tạo",
+    "edit": "Sửa",
+    "update": "Cập nhật",
+    "publish": "Đăng bài",
+    "delete": "Xóa",
+    "search": "Tìm kiếm"
+  },
+  "UserProfilePage": {
+    "loadingProfile": "Đang tải hồ sơ...",
+    "userNotFound": "Không tìm thấy người dùng!",
+    "updateSuccess": "Cập nhật thông tin thành công!",
+    "updateError": "Cập nhật thất bại. Vui lòng thử lại.",
+    "changeAvatar": "Đổi ảnh đại diện",
+    "uploadAvatarTitle": "Tải ảnh lên",
+    "joinedFrom": "Tham gia từ {date}",
+    "editProfile": "Sửa thông tin",
+    "recentPosts": "Bài viết gần đây"
+  },
+  "menu": {
+    "dashboard": "Bảng điều khiển"
+  },
+  "ChangePassword": {
+    "trigger": "Đổi mật khẩu",
+    "title": "Đổi mật khẩu",
+    "description": "Thay đổi mật khẩu cho tài khoản quản trị của bạn.",
+    "oldPasswordLabel": "Mật khẩu cũ",
+    "newPasswordLabel": "Mật khẩu mới",
+    "confirmNewPasswordLabel": "Xác nhận mật khẩu mới",
+    "placeholder": "••••••••",
+    "submit": "Đổi mật khẩu",
+    "cancel": "Hủy",
+    "success": "Đổi mật khẩu thành công.",
+    "errors": {
+      "oldPasswordRequired": "Mật khẩu cũ không được để trống",
+      "newPasswordRequired": "Mật khẩu mới không được để trống",
+      "newPasswordLength": "Mật khẩu mới phải từ 8 đến 32 ký tự",
+      "newPasswordDifferent": "Mật khẩu mới phải khác mật khẩu cũ",
+      "confirmPasswordRequired": "Xác nhận mật khẩu mới không được để trống",
+      "confirmPasswordMismatch": "Mật khẩu xác nhận không khớp"
+    }
+  },
+  "Login": {
+    "title": "Chào mừng trở lại",
+    "subtitle": "Đăng nhập để tiếp tục",
+    "emailLabel": "Email / Tài khoản",
+    "emailPlaceholder": "Nhập email hoặc tài khoản",
+    "passwordLabel": "Mật khẩu",
+    "passwordPlaceholder": "••••••••",
+    "forgotPassword": "Quên mật khẩu?",
+    "submit": "Đăng nhập",
+    "noAccount": "Chưa có tài khoản?",
+    "signUp": "Đăng ký ngay",
+    "errors": {
+      "emailRequired": "Email / Tài khoản không được để trống",
+      "passwordRequired": "Mật khẩu không được để trống",
+      "passwordMinLength": "Mật khẩu phải chứa ít nhất 6 ký tự"
+    }
+  },
+  "Branding": {
+    "systemName": "Diễn đàn công nghệ AI Việt Nam",
+    "systemDescription": "Cộng đồng chia sẻ prompts, tutorials và các hướng dẫn công nghệ AI hàng đầu tại Việt Nam."
+  },
+  "Register": {
+    "title": "Đăng ký tài khoản",
+    "subtitle": "Điền thông tin để bắt đầu",
+    "nameLabel": "Họ và tên",
+    "namePlaceholder": "Nhập họ và tên...",
+    "emailLabel": "Email",
+    "emailPlaceholder": "email@cuaban.com",
+    "passwordLabel": "Mật khẩu",
+    "confirmPasswordLabel": "Xác nhận mật khẩu",
+    "provinceLabel": "Tỉnh / Thành phố",
+    "provincePlaceholder": "Chọn tỉnh/thành",
+    "noProvince": "Không có tỉnh/thành",
+    "wardLabel": "Xã / Phường",
+    "wardPlaceholder": "Chọn xã/phường",
+    "wardDisabled": "Chọn tỉnh/thành trước",
+    "noWard": "Không có xã/phường",
+    "addressLabel": "Địa chỉ chi tiết",
+    "addressPlaceholder": "Số nhà, tên đường...",
+    "referralLabel": "Mã giới thiệu",
+    "referralOptional": "(Tuỳ chọn)",
+    "referralPlaceholder": "Nhập mã giới thiệu nếu có",
+    "submit": "Tạo tài khoản",
+    "haveAccount": "Đã có tài khoản?",
+    "login": "Đăng nhập",
+    "brandingTitle": "Gia nhập Hệ thống",
+    "brandingDescription": "Khởi đầu hành trình tối ưu hóa và phát triển doanh nghiệp của bạn.",
+    "errors": {
+      "nameRequired": "Họ và tên không được để trống",
+      "emailRequired": "Email không được để trống",
+      "emailInvalid": "Email không hợp lệ",
+      "passwordRequired": "Mật khẩu không được để trống",
+      "passwordMinLength": "Mật khẩu phải chứa ít nhất 8 ký tự",
+      "confirmPasswordRequired": "Xác nhận mật khẩu không được để trống",
+      "passwordMismatch": "Mật khẩu không khớp",
+      "generic": "Đã xảy ra lỗi. Vui lòng thử lại sau."
+    }
+  },
+  "ForgotPassword": {
+    "title": "Quên mật khẩu?",
+    "subtitle": "Nhập email để nhận mã OTP xác thực",
+    "emailLabel": "Email",
+    "emailPlaceholder": "email@cuaban.com",
+    "submit": "Gửi mã OTP",
+    "brandingTitle": "Khôi phục Tài khoản",
+    "brandingDescription": "Nhập email để nhận mã OTP xác thực. Chúng tôi sẽ giúp bạn đặt lại mật khẩu an toàn.",
+    "successTitle": "Đã gửi OTP!",
+    "successMessage": "Kiểm tra email {email} để nhận mã xác thực.",
+    "resendCode": "Gửi lại mã khác",
+    "backToLogin": "Quay lại đăng nhập",
+    "rememberPassword": "Đã nhớ mật khẩu?",
+    "successLabel": "Đặt lại mật khẩu thành công!",
+    "successDesc": "Mật khẩu của bạn đã được cập nhật thành công. Vui lòng đăng nhập lại.",
+    "back": "Quay lại",
+    "otpTitle": "Nhập mã xác thực",
+    "otpSubtitle": "Chúng tôi đã gửi mã OTP gồm 6 chữ số đến {email}",
+    "otpLabel": "Mã OTP",
+    "otpPlaceholder": "Nhập mã OTP 6 chữ số",
+    "verifyOtpSubmit": "Xác minh mã OTP",
+    "newPasswordTitle": "Mật khẩu mới",
+    "newPasswordSubtitle": "Vui lòng nhập mật khẩu mới bảo mật hơn",
+    "passwordLabel": "Mật khẩu mới",
+    "confirmPasswordLabel": "Xác nhận mật khẩu mới",
+    "passwordPlaceholder": "••••••••",
+    "resetPasswordSubmit": "Cập nhật mật khẩu",
+    "errors": {
+      "emailRequired": "Email không được để trống",
+      "sendFailed": "Không thể gửi OTP. Vui lòng kiểm tra email và thử lại.",
+      "otpRequired": "Mã OTP không được để trống",
+      "otpInvalid": "Mã OTP không chính xác hoặc đã hết hạn",
+      "passwordRequired": "Mật khẩu không được để trống",
+      "passwordMinLength": "Mật khẩu phải chứa ít nhất 8 ký tự",
+      "passwordMismatch": "Mật khẩu xác nhận không khớp",
+      "resetFailed": "Không thể đặt lại mật khẩu. Vui lòng thử lại."
+    }
+  },
+  "Post": {
+    "validation": {
+      "titleMin": "Tiêu đề phải có ít nhất 5 ký tự",
+      "titleMax": "Tiêu đề không được vượt quá 255 ký tự",
+      "categoryRequired": "Vui lòng chọn danh mục",
+      "contentMin": "Nội dung bài viết phải có ít nhất 10 ký tự",
+      "tagMax": "Mỗi thẻ không được vượt quá 20 ký tự"
+    },
+    "fields": {
+      "title": "Tiêu đề",
+      "titlePlaceholder": "Nhập tiêu đề bài viết...",
+      "category": "Danh mục",
+      "categoryPlaceholder": "Chọn danh mục...",
+      "tags": "Thẻ (Tags)",
+      "tagsPlaceholder": "Nhập từ khóa và nhấn Enter...",
+      "content": "Nội dung",
+      "savingDraft": "Đang lưu nháp...",
+      "lastSaved": "Đã tự động lưu nháp lúc {time}"
+    },
+    "editor": {
+      "insertPreview": "Chèn Xem trước",
+      "insertSimilar": "Chèn Bài liên quan",
+      "preview": "Xem trước",
+      "edit": "Chỉnh sửa",
+      "tagsPlaceholder": "Nhập từ khóa và nhấn Enter...",
+      "uploadImage": "Tải ảnh"
+    },
+    "draft": {
+      "autoSaved": "Đã tự động lưu nháp lúc {time}",
+      "autoSaveFailed": "Không thể lưu nháp tự động",
+      "restoreTitle": "Khôi phục bản nháp?",
+      "restorePrompt": "Bạn có bản nháp cho danh mục này. Bạn có muốn khôi phục không?",
+      "restore": "Khôi phục"
+    },
+    "dashboard": {
+      "newPost": "Viết bài mới",
+      "myPosts": "Bài viết của tôi",
+      "managePosts": "Quản lý các bài viết của bạn trên diễn đàn.",
+      "searchPlaceholder": "Tìm kiếm bài viết theo tiêu đề...",
+      "loadingPosts": "Đang tải danh sách bài viết...",
+      "noPosts": "Bạn chưa có bài viết nào hoặc không tìm thấy bài viết phù hợp.",
+      "firstPost": "Viết bài viết đầu tiên",
+      "colTitle": "Tiêu đề",
+      "colComments": "Bình luận",
+      "colLikes": "Lượt thích",
+      "colStatus": "Trạng thái",
+      "colActions": "Thao tác",
+      "promoteTitle": "Đăng lên trang chủ",
+      "editTitle": "Sửa bài viết",
+      "deleteTitle": "Xóa bài viết",
+      "deleteConfirmTitle": "Xóa bài viết?",
+      "deleteConfirmDesc": "Bạn có chắc chắn muốn xóa bài viết này không? Hành động này không thể hoàn tác.",
+      "cancel": "Hủy",
+      "delete": "Xóa",
+      "prev": "Trước",
+      "next": "Sau",
+      "pageOf": "Trang {page} / {total}",
+      "statusPending": "Chờ duyệt",
+      "statusPublished": "Đã đăng",
+      "statusRejected": "Từ chối",
+      "rejectReason": "Lý do từ chối:",
+      "statusApproved": "Đã duyệt",
+      "statusDeleted": "Đã xóa",
+      "statusUnknown": "Không rõ"
+    }
+  },
+
+  "profile": {
+    "personalInfo": "Thông tin cá nhân",
+    "name": "Họ và tên",
+    "dob": "Ngày sinh",
+    "hometown": "Quê quán",
+    "gender": "Giới tính",
+    "bio": "Giới thiệu bản thân",
+    "noBio": "Chưa có giới thiệu.",
+    "editProfile": "Cập nhật thông tin",
+    "selectGender": "-- Chọn giới tính --",
+    "male": "Nam",
+    "female": "Nữ",
+    "other": "Khác",
+    "bioPlaceholder": "Hãy viết vài dòng về bạn (tối đa 1000 ký tự)...",
+    "noPosts": "Người dùng chưa có bài viết nào.",
+    "dobMaxError": "Ngày sinh không được vượt quá ngày hiện tại"
+  },
+  "TermsPage": {
+    "title": "Điều Khoản Sử Dụng",
+    "updated": "Cập nhật lần cuối: ngày 15 tháng 06 năm 2026. Vui lòng đọc kỹ các điều khoản trước khi sử dụng dịch vụ của chúng tôi.",
+    "contactTitle": "Bạn có thắc mắc về điều khoản?",
+    "contactDesc": "Nếu bạn có bất kỳ câu hỏi nào liên quan đến các Điều khoản sử dụng này, vui lòng gửi phản hồi qua email hỗ trợ của chúng tôi tại ",
+    "sections": {
+      "1": {
+        "title": "1. Chấp thuận điều khoản",
+        "content": "Bằng việc truy cập và sử dụng dịch vụ của AI_Lab, bạn đồng ý tuân thủ và bị ràng buộc bởi các điều khoản, điều kiện dưới đây cũng như các quy định pháp luật hiện hành. Nếu bạn không đồng ý với bất kỳ phần nào của các điều khoản này, vui lòng ngừng sử dụng trang web ngay lập tức."
+      },
+      "2": {
+        "title": "2. Tài khoản và Bảo mật",
+        "content": "Khi đăng ký tài khoản tại AI_Lab, bạn có trách nhiệm cung cấp thông tin chính xác và cập nhật đầy đủ. Bạn chịu trách nhiệm hoàn toàn về việc bảo mật mật khẩu và tất cả các hoạt động diễn ra dưới tài khoản của mình. Vui lòng thông báo ngay cho quản trị viên nếu phát hiện hành vi sử dụng tài khoản trái phép."
+      },
+      "3": {
+        "title": "3. Quyền sở hữu trí tuệ",
+        "content": "Tất cả các nội dung đăng tải trên trang web, bao gồm bài viết, prompt, hình ảnh, mã nguồn và tài liệu liên quan đều thuộc quyền sở hữu của tác giả hoặc AI_Lab. Bạn được cấp quyền phi độc quyền để sử dụng cá nhân, phi thương mại. Mọi hành vi sao chép, phân phối hoặc thương mại hóa nội dung mà không được sự đồng ý của chủ sở hữu đều bị nghiêm cấm."
+      },
+      "4": {
+        "title": "4. Quy định hành vi người dùng",
+        "content": "Người dùng không được phép đăng tải các nội dung vi phạm pháp luật, thuần phong mỹ tục, bôi nhọ, quấy rối hoặc xâm phạm quyền lợi của người khác. Nghiêm cấm mọi hình thức spam, phát tán mã độc hại, hoặc thực hiện các hành động gây ảnh hưởng tiêu cực đến hiệu năng hoạt động của hệ thống."
+      },
+      "5": {
+        "title": "5. Giới hạn trách nhiệm",
+        "content": "Dịch vụ và thông tin trên AI_Lab được cung cấp trên cơ sở 'sẵn có' mà không có bất kỳ sự bảo đảm nào. Chúng tôi không chịu trách nhiệm đối với bất kỳ tổn thất trực tiếp hay gián tiếp phát sinh từ việc sử dụng trang web hoặc các thông tin tham khảo trên hệ thống."
+      },
+      "6": {
+        "title": "6. Thay đổi điều khoản",
+        "content": "AI_Lab có quyền sửa đổi và cập nhật các điều khoản này vào bất kỳ lúc nào mà không cần báo trước. Các thay đổi sẽ có hiệu lực ngay khi đăng tải. Việc tiếp tục sử dụng dịch vụ sau khi điều khoản được cập nhật đồng nghĩa với việc bạn đồng ý với các thay đổi đó."
+      }
+    }
+  },
+  "PrivacyPage": {
+    "title": "Chính Sách Bảo Mật",
+    "updated": "Cập nhật lần cuối: ngày 15 tháng 06 năm 2026. AI_Lab luôn nỗ lực hết mình để bảo vệ dữ liệu và thông tin cá nhân của bạn.",
+    "contactTitle": "Bạn cần hỗ trợ thêm?",
+    "contactDesc": "Mọi thắc mắc, đóng góp ý kiến hoặc phản khiếu nại liên quan đến Chính sách bảo mật này, xin vui lòng liên hệ qua email: ",
+    "sections": {
+      "1": {
+        "title": "1. Thông tin chúng tôi thu thập",
+        "content": "Chúng tôi thu thập thông tin khi bạn đăng ký tài khoản, gửi bài viết, bình luận hoặc tham gia các hoạt động khác. Thông tin bao gồm: tên người dùng, địa chỉ email, ảnh đại diện và địa chỉ IP của bạn. Các thông tin này giúp cải thiện trải nghiệm người dùng trên hệ thống."
+      },
+      "2": {
+        "title": "2. Cách chúng tôi sử dụng thông tin",
+        "content": "Thông tin thu thập được sử dụng để duy trì, vận hành và nâng cao chất lượng dịch vụ của AI_Lab. Chúng tôi có thể sử dụng email của bạn để gửi thông báo về cập nhật kỹ thuật, thông báo liên quan đến tài khoản hoặc các bản tin bài viết nổi bật nếu bạn đăng ký nhận tin."
+      },
+      "3": {
+        "title": "3. Bảo vệ và lưu trữ thông tin",
+        "content": "Mọi thông tin cá nhân của bạn được lưu trữ trên các máy chủ bảo mật an toàn. Chúng tôi áp dụng các biện pháp bảo mật tối tân (như mã hóa SSL/TLS) để ngăn ngừa các truy cập trái phép, sửa đổi hay làm lộ thông tin cá nhân của bạn."
+      },
+      "4": {
+        "title": "4. Chia sẻ thông tin với bên thứ ba",
+        "content": "AI_Lab cam kết KHÔNG bán, trao đổi hoặc cho thuê thông tin cá nhân của bạn cho bất kỳ bên thứ ba nào vì mục đích thương mại. Chúng tôi chỉ chia sẻ thông tin khi có yêu cầu pháp lý rõ ràng hoặc để bảo vệ an toàn cho toàn bộ cộng đồng."
+      },
+      "5": {
+        "title": "5. Cookie và công nghệ theo dõi",
+        "content": "Chúng tôi sử dụng cookie để lưu giữ tùy chọn giao diện, phân tích lưu lượng truy cập và duy trì trạng thái đăng nhập của bạn. Bạn có thể chọn vô hiệu hóa cookie trong phần cài đặt trình duyệt, tuy nhiên một số tính năng có thể không hoạt động tối ưu."
+      },
+      "6": {
+        "title": "6. Quyền lợi của bạn về thông tin cá nhân",
+        "content": "Bạn có quyền truy cập, chỉnh sửa hoặc yêu cầu xóa bỏ thông tin cá nhân của mình trực tiếp thông qua trang quản lý tài khoản. Nếu có bất kỳ vướng mắc nào trong quá trình thực hiện quyền này, vui lòng liên hệ trực tiếp với đội ngũ hỗ trợ của chúng tôi."
+      }
+    }
+  },
+  "ImageUpload": {
+    "invalidImage": "Vui lòng chọn file ảnh hợp lệ",
+    "missingApiKey": "Lỗi cấu hình: Thiếu API key tải ảnh",
+    "uploadSuccess": "Tải ảnh lên thành công",
+    "uploadError": "Có lỗi xảy ra khi tải ảnh lên",
+    "networkError": "Lỗi kết nối khi tải ảnh lên",
+    "copiedLink": "Đã copy link ảnh",
+    "title": "Tải ảnh lên",
+    "desc": "Kéo thả ảnh vào đây để tải lên và lấy link nhúng vào bài viết.",
+    "uploading": "Đang tải lên...",
+    "clickOrDrag": "Nhấn hoặc kéo thả ảnh",
+    "successText": "Tải lên thành công!"
+  },
+  "Admin": {
+    "sidebar": {
+      "dashboard": "Tổng quan",
+      "approval": "Duyệt bài",
+      "reports": "Báo cáo vi phạm",
+      "users": "Thành viên",
+      "posts": "Bài viết",
+      "categories": "Danh mục",
+      "brandTitle": "Quản trị",
+      "brandSubtitle": "Bảng điều khiển",
+      "adminRole": "Admin",
+      "moderatorRole": "Moderator"
+    },
+    "layout": {
+      "accessDenied": "Từ chối truy cập",
+      "noPermission": "Bạn không có quyền truy cập Bảng quản trị.",
+      "noPermissionPage": "Bạn không có quyền truy cập trang này.",
+      "backToHome": "Quay lại Trang chủ",
+      "goToApprovalQueue": "Đi đến Danh sách duyệt",
+      "backToSite": "Quay lại trang web"
+    },
+    "dashboard": {
+      "title": "Tổng quan hệ thống",
+      "subtitle": "Tổng quan hệ thống và phân tích dữ liệu",
+      "periods": {
+        "today": "Hôm nay",
+        "7days": "7 ngày",
+        "30days": "30 ngày",
+        "year": "Năm nay"
+      },
+      "stats": {
+        "totalUsers": "Tổng thành viên",
+        "totalPosts": "Tổng bài viết",
+        "pendingPosts": "Chờ phê duyệt",
+        "totalViews": "Tổng lượt xem",
+        "newPosts": "Bài viết mới",
+        "newUsers": "Thành viên mới",
+        "newComments": "Bình luận mới",
+        "totalComments": "Tổng bình luận"
+      },
+      "chart": {
+        "title": "Biểu đồ hoạt động",
+        "noData": "Không có dữ liệu biểu đồ trong khoảng thời gian này.",
+        "types": {
+          "posts": "bài viết",
+          "users": "thành viên",
+          "views": "lượt xem",
+          "comments": "bình luận"
+        }
+      },
+      "topPosts": {
+        "title": "Bài viết nổi bật",
+        "noData": "Chưa có dữ liệu.",
+        "hideSuccess": "Ẩn bài viết thành công.",
+        "hideError": "Đã xảy ra lỗi khi ẩn bài viết.",
+        "hideConfirmTitle": "Ẩn bài viết",
+        "hideConfirmDesc": "Bạn có chắc chắn muốn ẩn bài viết \"{title}\" khỏi diễn đàn công khai?"
+      },
+      "topUsers": {
+        "title": "Thành viên tích cực",
+        "noData": "Chưa có dữ liệu.",
+        "statsCount": "{posts} bài viết · {comments} bình luận"
+      }
+    },
+    "approval": {
+      "title": "Duyệt bài viết",
+      "subtitle": "Xem xét và duyệt hoặc từ chối các bài viết đang chờ",
+      "tabs": {
+        "pending": "Chờ duyệt",
+        "published": "Đã duyệt",
+        "rejected": "Từ chối duyệt"
+      },
+      "searchPlaceholder": "Tìm kiếm bài viết...",
+      "filter": "Lọc",
+      "noPending": "Không có bài viết chờ duyệt",
+      "noPublished": "Không có bài viết đã duyệt",
+      "noRejected": "Không có bài viết bị từ chối",
+      "table": {
+        "title": "Tiêu đề",
+        "author": "Tác giả",
+        "category": "Danh mục",
+        "createdAt": "Ngày tạo",
+        "rejectReason": "Lý do từ chối",
+        "actions": "Hành động",
+        "view": "Xem"
+      },
+      "rejectMinLength": "Lý do phải dài ít nhất 10 ký tự.",
+      "preview": "Xem trước",
+      "approve": "Phê duyệt",
+      "reject": "Từ chối",
+      "rejectTitle": "Từ chối bài viết",
+      "rejectDesc": "Cung cấp lý do từ chối bài viết \"{title}\"",
+      "rejectPlaceholder": "Nhập lý do từ chối (tối thiểu 10 ký tự)...",
+      "totalPosts": "Tổng cộng: {total} bài viết",
+      "toastApproveSuccess": "Đã phê duyệt bài viết thành công.",
+      "toastRejectSuccess": "Đã từ chối bài viết thành công."
+    },
+    "categories": {
+      "title": "Danh mục",
+      "subtitle": "Quản lý các danh mục bài viết trên hệ thống",
+      "addCategory": "Thêm danh mục",
+      "noCategories": "Chưa có danh mục nào",
+      "createFirst": "Tạo danh mục đầu tiên",
+      "table": {
+        "name": "Tên danh mục",
+        "slug": "Đường dẫn (Slug)",
+        "description": "Mô tả",
+        "posts": "Bài viết",
+        "actions": "Hành động"
+      },
+      "form": {
+        "nameLabel": "Tên danh mục",
+        "nameRequired": "Tên danh mục là bắt buộc.",
+        "slugLabel": "Đường dẫn (Slug)",
+        "slugRequired": "Đường dẫn (slug) là bắt buộc.",
+        "descriptionLabel": "Mô tả",
+        "descriptionPlaceholder": "Mô tả tùy chọn...",
+        "createTitle": "Thêm danh mục",
+        "createDesc": "Tạo một danh mục bài viết mới.",
+        "editTitle": "Sửa danh mục",
+        "editDesc": "Cập nhật thông tin danh mục \"{name}\"",
+        "moveTitle": "Di chuyển bài viết sang danh mục:"
+      },
+      "delete": {
+        "title": "Xóa danh mục",
+        "confirm": "Bạn có chắc chắn muốn xóa danh mục \"{name}\"?",
+        "warnHasPosts": "Danh mục này hiện đang chứa {count} bài viết. Bạn cần di chuyển tất cả bài viết sang danh mục khác trước khi xóa.",
+        "movePlaceholder": "Chọn danh mục đích...",
+        "moveError": "Vui lòng chọn danh mục để di chuyển các bài viết.",
+        "moveAndDelete": "Di chuyển và Xóa"
+      }
+    },
+    "posts": {
+      "title": "Bài viết",
+      "subtitle": "Quản lý tất cả bài viết trên hệ thống",
+      "searchPlaceholder": "Tìm kiếm bài viết...",
+      "status": {
+        "all": "Tất cả trạng thái",
+        "pending": "Chờ duyệt",
+        "published": "Đã đăng",
+        "rejected": "Từ chối",
+        "approved": "Đã duyệt",
+        "deleted": "Đã ẩn",
+        "unknown": "Không rõ"
+      },
+      "filter": "Tìm kiếm",
+      "noPosts": "Không tìm thấy bài viết nào",
+      "table": {
+        "title": "Tiêu đề",
+        "author": "Tác giả",
+        "category": "Danh mục",
+        "status": "Trạng thái",
+        "views": "Lượt xem",
+        "createdAt": "Ngày tạo",
+        "actions": "Hành động"
+      },
+      "actions": {
+        "preview": "Xem trước",
+        "edit": "Sửa bài viết",
+        "show": "Hiện bài viết",
+        "hide": "Ẩn bài viết",
+        "delete": "Xóa bài viết"
+      },
+      "deleteConfirm": {
+        "title": "Xóa bài viết",
+        "desc": "Bạn có chắc chắn muốn xóa vĩnh viễn bài viết \"{title}\" khỏi hệ thống? Thao tác này không thể khôi phục lại."
+      },
+      "hideConfirm": {
+        "title": "Ẩn bài viết",
+        "desc": "Bạn có chắc chắn muốn ẩn bài viết \"{title}\" khỏi diễn đàn?"
+      },
+      "restoreConfirm": {
+        "title": "Hiện bài viết",
+        "desc": "Bạn có chắc chắn muốn hiển thị lại bài viết \"{title}\" trên diễn đàn?"
+      },
+      "totalPosts": "Tổng cộng: {total} bài viết"
+    },
+    "reports": {
+      "title": "Báo cáo vi phạm",
+      "subtitle": "Quản lý báo cáo vi phạm nội dung từ thành viên",
+      "status": {
+        "all": "Tất cả trạng thái",
+        "pending": "Đang chờ",
+        "resolved": "Đã xử lý",
+        "dismissed": "Bác bỏ"
+      },
+      "type": {
+        "all": "Tất cả phân loại",
+        "post": "Bài viết",
+        "comment": "Bình luận"
+      },
+      "clearFilters": "Xóa bộ lọc",
+      "noReports": "Không tìm thấy báo cáo nào",
+      "table": {
+        "reporter": "Người báo cáo",
+        "type": "Phân loại",
+        "reason": "Lý do",
+        "status": "Trạng thái",
+        "createdAt": "Ngày tạo",
+        "actions": "Hành động"
+      },
+      "actions": {
+        "view": "Xem chi tiết",
+        "resolve": "Xử lý (Xóa nội dung)",
+        "dismiss": "Bác bỏ báo cáo"
+      },
+      "detail": {
+        "title": "Báo cáo #{id}",
+        "subtitle": "Báo cáo bởi {reporter} · {date}",
+        "reportedContent": "Nội dung bị báo cáo ({type})",
+        "reason": "Lý do vi phạm",
+        "noContent": "Nội dung không khả dụng"
+      },
+      "resolveConfirm": {
+        "title": "Xử lý báo cáo vi phạm",
+        "desc": "Bạn có chắc chắn muốn xử lý báo cáo này? Thao tác này sẽ xóa và ẩn nội dung bị báo cáo ({type}) khỏi hệ thống."
+      },
+      "dismissConfirm": {
+        "title": "Bác bỏ báo cáo vi phạm",
+        "desc": "Bạn có chắc chắn muốn bác bỏ báo cáo này? Thao tác này sẽ giữ lại nội dung bị báo cáo và đóng báo cáo này."
+      },
+      "totalReports": "Tổng cộng: {total}",
+      "toastResolveSuccess": "Báo cáo đã được xử lý và nội dung vi phạm đã bị xóa.",
+      "toastDismissSuccess": "Báo cáo đã được bác bỏ."
+    },
+    "users": {
+      "title": "Thành viên",
+      "subtitle": "Quản lý tài khoản thành viên và phân quyền hệ thống",
+      "searchPlaceholder": "Tìm kiếm thành viên...",
+      "role": {
+        "all": "Tất cả vai trò",
+        "admin": "Quản trị viên",
+        "moderator": "Điều hành viên",
+        "member": "Thành viên"
+      },
+      "status": {
+        "all": "Tất cả trạng thái",
+        "active": "Hoạt động",
+        "banned": "Bị cấm"
+      },
+      "table": {
+        "name": "Họ tên",
+        "email": "Email",
+        "role": "Vai trò",
+        "status": "Trạng thái",
+        "joinedAt": "Ngày tham gia",
+        "actions": "Hành động"
+      },
+      "actions": {
+        "viewBanReason": "Xem lý do cấm",
+        "makeAdmin": "Đổi làm Admin",
+        "makeMod": "Đổi làm Mod",
+        "makeMember": "Chuyển thành Member",
+        "ban": "Ban thành viên",
+        "unban": "Mở khóa tài khoản",
+        "delete": "Xóa tài khoản"
+      },
+      "ban": {
+        "title": "Ban tài khoản",
+        "desc": "Cung cấp lý do khóa tài khoản đối với {name}",
+        "placeholder": "Nhập lý do cấm...",
+        "errorMin": "Lý do cấm phải dài ít nhất 10 ký tự."
+      },
+      "banReason": {
+        "title": "Lý do cấm tài khoản",
+        "desc": "Chi tiết lý do khóa tài khoản của {name}",
+        "default": "Không có lý do cấm cụ thể."
+      },
+      "totalUsers": "Tổng cộng: {total} thành viên",
+      "noUsers": "Không tìm thấy thành viên nào."
+    }
+  }
+}
