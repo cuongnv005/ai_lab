@@ -5,9 +5,11 @@ import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { usePosts, useCategories, useHotPosts, useTopAuthors } from '@/features/posts/hooks/use-posts';
 import { PostCard, PostListCard } from '@/features/posts/components/post-card';
-import { Calendar, User, Eye, ArrowRight, BookOpen, Grid, List } from 'lucide-react';
+import { Calendar, User, Eye, ArrowRight, BookOpen, Grid, List, Flame, TrendingUp, Mail } from 'lucide-react';
 import { formatDateTime } from '@/shared/lib/format-date';
 import { useTranslations } from 'next-intl';
+import { toast } from 'sonner';
+import { cn } from '@/shared/lib/utils';
 
 function HomePageContent() {
   const t = useTranslations("HomePage");
@@ -18,6 +20,19 @@ function HomePageContent() {
   const search = searchParams.get('search') || undefined;
   
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('list');
+  const [email, setEmail] = useState('');
+
+  const handleNewsletterSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email.trim()) return;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email.trim())) {
+      toast.error(t("newsletter.invalidEmail", { defaultValue: "Địa chỉ email không hợp lệ!" }));
+      return;
+    }
+    toast.success(t("newsletter.success", { defaultValue: "Đăng ký nhận tin thành công!" }));
+    setEmail('');
+  };
 
   const { posts, pagination, isLoading, isFetching, isError, error } = usePosts({
     page,
@@ -29,25 +44,66 @@ function HomePageContent() {
 
   if (isLoading || isFetching) {
     return (
-      <div className="space-y-8 py-6 animate-pulse">
+      <div className="space-y-16 py-6 animate-pulse text-left">
         {/* Hero Banner Skeleton */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-96">
-          <div className="lg:col-span-2 bg-muted rounded-2xl h-full" />
-          <div className="space-y-4 h-full flex flex-col justify-between">
-            <div className="bg-muted rounded-xl h-28" />
-            <div className="bg-muted rounded-xl h-28" />
-            <div className="bg-muted rounded-xl h-28" />
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="lg:col-span-2 bg-muted rounded-2xl aspect-[16/10]" />
+          <div className="lg:col-span-1 flex flex-col gap-8 h-full">
+            <div className="flex-1 bg-muted rounded-xl min-h-[180px]" />
+            <div className="flex-1 bg-muted rounded-xl min-h-[180px]" />
           </div>
         </div>
 
-        {/* Section title skeleton */}
-        <div className="h-8 bg-muted rounded w-48" />
+        {/* Main Body Skeleton */}
+        <div className="flex flex-col lg:flex-row gap-20">
+          {/* Main Content Area Skeleton */}
+          <div className={cn("space-y-12", search ? "w-full" : "lg:w-[68%]")}>
+            <div className="h-8 bg-muted rounded-xl w-48 mb-8" />
+            <div className="space-y-12">
+              {[1, 2, 3].map((n) => (
+                <div key={n} className="flex flex-col md:flex-row gap-8">
+                  <div className="w-full md:w-60 h-40 bg-muted rounded-2xl shrink-0" />
+                  <div className="flex-1 space-y-4 py-2">
+                    <div className="h-4 bg-muted rounded w-1/4" />
+                    <div className="h-6 bg-muted rounded w-3/4" />
+                    <div className="h-4 bg-muted rounded w-full" />
+                    <div className="h-4 bg-muted rounded w-1/2" />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
 
-        {/* Grid skeleton */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {[1, 2, 3, 4].map((n) => (
-            <div key={n} className="bg-muted rounded-xl h-80" />
-          ))}
+          {/* Sidebar Area Skeleton */}
+          {!search && (
+            <div className="lg:w-[32%] space-y-12">
+              {/* Categories Widget Skeleton */}
+              <div className="bg-muted/20 rounded-2xl p-8 space-y-6">
+                <div className="h-6 bg-muted rounded w-1/2" />
+                <div className="space-y-3">
+                  {[1, 2, 3, 4].map((n) => (
+                    <div key={n} className="h-8 bg-muted rounded-xl w-full" />
+                  ))}
+                </div>
+              </div>
+
+              {/* Hot Posts Widget Skeleton */}
+              <div className="bg-muted/20 rounded-2xl p-6 space-y-6">
+                <div className="h-6 bg-muted rounded w-1/2" />
+                <div className="space-y-6">
+                  {[1, 2, 3].map((n) => (
+                    <div key={n} className="flex gap-4">
+                      <div className="h-9 bg-muted rounded-lg w-9 shrink-0" />
+                      <div className="flex-1 space-y-2">
+                        <div className="h-4 bg-muted rounded w-full" />
+                        <div className="h-3 bg-muted rounded w-2/3" />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     );
@@ -63,12 +119,11 @@ function HomePageContent() {
     );
   }
 
-  // Zaira style layout data extraction
+  // Extract hero layout data
   const bigPost = page === 1 && !userId && !search ? posts[0] : undefined;
-  const smallPosts = page === 1 && !userId && !search ? posts.slice(1, 4) : [];
-  const recentPosts = page === 1 && !userId && !search ? posts.slice(4) : posts;
+  const smallPosts = page === 1 && !userId && !search ? posts.slice(1, 3) : [];
+  const recentPosts = page === 1 && !userId && !search ? posts.slice(3) : posts;
 
-  // Fallback images for demonstration
   const getPostImage = (post: typeof bigPost) => {
     if (!post) return '';
     return post.first_image
@@ -76,7 +131,7 @@ function HomePageContent() {
   };
 
   return (
-    <div className="space-y-12 py-6">
+    <div className="space-y-16 py-6 text-left">
       {/* Author Filter Header */}
       {userId && posts.length > 0 && (
         <div className="bg-card border border-border rounded-2xl p-6 mb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -109,7 +164,7 @@ function HomePageContent() {
 
       {/* Search Filter Header */}
       {search && posts.length > 0 && (
-        <div className="bg-card border border-border rounded-2xl p-6 mb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div className="bg-card border border-[#E2E8F0] dark:border-[#2d2d30]  rounded-2xl p-6 mb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <span className="text-xs text-muted-foreground uppercase tracking-wider font-semibold">{t("searchResults", { defaultValue: "Kết quả tìm kiếm" })}</span>
             <h2 className="text-xl md:text-2xl font-extrabold text-foreground mt-1">
@@ -137,69 +192,64 @@ function HomePageContent() {
         </div>
       )}
 
-      {/* 1. Hero Banner Section (Zaira Style) */}
+      {/* Hero Section */}
       {bigPost && (
         <section className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Big Featured Post (70% width on Desktop) */}
-          <div className="lg:col-span-2 relative group overflow-hidden rounded-2xl aspect-[16/10] bg-zinc-950 border dark:border-border shadow-xs hover:shadow-md transition-all duration-300">
+          {/* Big Featured Card */}
+          <article className="lg:col-span-2 relative group overflow-hidden rounded-2xl aspect-[16/10] bg-zinc-950 border dark:border-border shadow-xs hover:shadow-md transition-all duration-300">
             <img
               src={getPostImage(bigPost)}
               alt={bigPost.title}
-              className="absolute inset-0 w-full h-full object-cover group-hover:scale-102 transition-transform duration-700 opacity-80"
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/35 to-transparent" />
-            
-            <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 space-y-4 text-white">
-              <span className="bg-blue-600 text-white text-[10px] font-bold px-2.5 py-1 rounded-sm uppercase tracking-wider">
-                {bigPost.category?.name || 'Technology'}
+            <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/95 via-zinc-950/40 to-transparent"></div>
+            <div className="absolute bottom-0 left-0 p-6 w-full max-w-4xl text-left">
+              <span className="inline-block w-fit px-3 bg-primary dark:bg-[#0047ab] text-white text-[10px] font-bold rounded-md mb-3 uppercase tracking-wider">
+                {bigPost.category?.name || 'Generative AI'}
               </span>
-              <h2 className="text-xl md:text-3xl font-extrabold leading-tight hover:underline">
-                <Link href={`/posts/${bigPost.id}`} className="hover:text-white">
+              <h1 className="text-white text-2xl md:text-3xl font-extrabold mb-3 leading-tight">
+                <Link href={`/posts/${bigPost.id}`} className="hover:underline hover:text-white text-white transition-colors line-clamp-3">
                   {bigPost.title}
                 </Link>
-              </h2>
-              <div className="flex items-center gap-4 text-xs text-zinc-300">
-                <span className="flex items-center gap-1">
-                  <User className="w-3.5 h-3.5" /> {t("byAuthor", { name: bigPost.user?.name || t("admin", { defaultValue: "Admin" }) })}
+              </h1>
+              <div className="hidden md:flex items-center gap-6 text-white/80 text-xs">
+                <span className="flex items-center gap-2">
+                  <User className="w-4 h-4" /> {bigPost.user?.name || 'Anonymous'}
                 </span>
-                <span className="flex items-center gap-1">
-                  <Calendar className="w-3.5 h-3.5" /> {formatDateTime(bigPost.created_at)}
+                <span className="flex items-center gap-2">
+                  <Calendar className="w-4 h-4" /> {formatDateTime(bigPost.created_at)}
                 </span>
-                <span className="flex items-center gap-1 ml-auto">
-                  <Eye className="w-3.5 h-3.5" /> {t("viewsCount", { count: bigPost.views_count })}
+                <span className="flex items-center gap-2">
+                  <Eye className="w-4 h-4" /> {bigPost.views_count} lượt xem
                 </span>
               </div>
             </div>
-          </div>
+          </article>
 
-          {/* Small Posts Stack (30% width on Desktop) */}
-          <div className="space-y-4 flex flex-col justify-between">
+          {/* Small Feature Stack */}
+          <div className="lg:col-span-1 flex flex-col gap-8">
             {smallPosts.map((post) => (
-              <div
-                key={post.id}
-                className="relative group overflow-hidden rounded-xl h-[31%] min-h-[110px] bg-zinc-950 border dark:border-border shadow-xs hover:shadow-sm transition-all duration-300"
-              >
+              <article key={post.id} className="relative flex-1 rounded-xl overflow-hidden shadow-lg group cursor-pointer min-h-[240px] bg-zinc-950">
                 <img
                   src={getPostImage(post)}
                   alt={post.title}
-                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-102 transition-transform duration-500 opacity-60"
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70"
                 />
-                <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/30 to-transparent" />
-                
-                <div className="absolute bottom-0 left-0 right-0 p-4 space-y-2 text-white">
-                  <span className="bg-emerald-600 text-white text-[9px] font-bold px-2 py-0.5 rounded-sm uppercase tracking-wider">
-                    {post.category?.name || 'Mobile'}
+                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors"></div>
+                <div className="relative h-full p-8 flex flex-col justify-end text-left">
+                  <span className="inline-block w-fit px-3 bg-primary dark:bg-[#0047ab] text-white text-[10px] font-bold rounded-md mb-3 uppercase tracking-wider">
+                    {post.category?.name || 'Generative AI'}
                   </span>
-                  <h3 className="text-xs md:text-sm font-bold leading-snug line-clamp-2 hover:underline">
+                  <h3 className="text-white text-base md:text-lg font-bold leading-snug line-clamp-2">
                     <Link href={`/posts/${post.id}`} className="hover:text-white">
                       {post.title}
                     </Link>
                   </h3>
                 </div>
-              </div>
+              </article>
             ))}
             {smallPosts.length === 0 && (
-              <div className="flex items-center justify-center h-full border rounded-xl border-dashed p-6 text-center text-muted-foreground">
+              <div className="flex items-center justify-center h-full border rounded-xl border-dashed border-outline-variant p-6 text-center text-muted-foreground">
                 {t("updatingFeatured", { defaultValue: "Đang cập nhật các bài viết tiêu điểm..." })}
               </div>
             )}
@@ -207,60 +257,78 @@ function HomePageContent() {
         </section>
       )}
 
-      {/* 2. Main Portal Area: Recent Posts + Sidebar */}
-      <section className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Left Column: Recent Posts List (User layout grid) */}
-        <div className="lg:col-span-2 space-y-6">
-          <div className="flex items-center justify-between border-b pb-3 mb-4">
-            <h2 className="text-lg font-bold text-muted-foreground dark:text-primary uppercase tracking-wider relative">
-              {t("latestPosts", { defaultValue: "Bài viết mới nhất" })}
-            </h2>
-            <div className="flex items-center gap-1 bg-muted rounded-lg p-1 border">
+      {/* Main Body Layout */}
+      <div className="flex flex-col lg:flex-row gap-20">
+        {/* Main Content Area */}
+        <section className={cn(search ? "w-full text-left" : "lg:w-[68%] text-left")}>
+          <div className="flex justify-between items-end mb-8 border-b border-[#E2E8F0] dark:border-[#2d2d30] pb-4">
+            <div>
+              <h2 className="text-2xl font-black text-on-surface uppercase tracking-tight mb-2">
+                {t("latestPosts", { defaultValue: "Bài viết mới nhất" })}
+              </h2>
+              <p className="text-sm text-on-surface-variant">
+                {t("latestPostsSub", { defaultValue: "Cập nhật những chuyển động mới nhất của giới công nghệ" })}
+              </p>
+            </div>
+            <div className="hidden md:flex gap-2">
               <button
                 onClick={() => setViewMode('grid')}
-                title="Dạng lưới"
-                className={`p-1.5 rounded-md transition-all ${
+                className={`p-2 rounded-lg border border-transparent transition-all cursor-pointer ${
                   viewMode === 'grid'
-                    ? 'bg-white dark:bg-zinc-800 text-primary shadow-sm'
-                    : 'text-muted-foreground hover:text-foreground hover:bg-white/50 dark:hover:bg-zinc-800/50'
+                    ? 'bg-primary dark:bg-[#0047ab] text-white shadow-lg shadow-primary/20 dark:shadow-[#0047ab]/20'
+                    : 'bg-surface-container text-on-surface-variant hover:text-primary dark:hover:text-[#0047ab] hover:border-outline-variant'
                 }`}
               >
-                <Grid className="w-4 h-4" />
+                <Grid className="w-5 h-5" />
               </button>
               <button
                 onClick={() => setViewMode('list')}
-                title="Dạng danh sách"
-                className={`p-1.5 rounded-md transition-all ${
+                className={`p-2 rounded-lg border border-transparent transition-all cursor-pointer ${
                   viewMode === 'list'
-                    ? 'bg-white dark:bg-zinc-800 text-primary shadow-sm'
-                    : 'text-muted-foreground hover:text-foreground hover:bg-white/50 dark:hover:bg-zinc-800/50'
+                    ? 'bg-primary dark:bg-[#0047ab] text-white shadow-lg shadow-primary/20 dark:shadow-[#0047ab]/20'
+                    : 'bg-surface-container text-on-surface-variant hover:text-primary dark:hover:text-[#0047ab] hover:border-outline-variant'
                 }`}
               >
-                <List className="w-4 h-4" />
+                <List className="w-5 h-5" />
               </button>
             </div>
           </div>
 
-          {recentPosts.length > 0 && (
-            <div className={viewMode === 'grid' ? "grid grid-cols-1 md:grid-cols-2 gap-6" : "flex flex-col gap-6"}>
-              {recentPosts.map((post) => (
-                viewMode === 'grid' 
-                  ? <PostCard key={post.id} post={post} /> 
-                  : <PostListCard key={post.id} post={post} />
-              ))}
+          {recentPosts.length > 0 ? (
+            <div className="w-full">
+              {/* Desktop/Tablet List View */}
+              <div className={`hidden md:flex flex-col gap-12 ${viewMode === 'grid' ? 'md:hidden' : ''}`}>
+                {recentPosts.map((post) => (
+                  <PostListCard key={post.id} post={post} />
+                ))}
+              </div>
+              
+              {/* Desktop Grid View OR Mobile View (Always Card) */}
+              <div className={`grid grid-cols-1 gap-8 ${viewMode === 'grid' ? 'md:grid-cols-2' : 'md:hidden'}`}>
+                {recentPosts.map((post) => (
+                  <PostCard key={post.id} post={post} />
+                ))}
+              </div>
             </div>
+          ) : (
+            posts.length === 0 && (
+              <div className="text-center py-12 border rounded-2xl border-dashed">
+                <BookOpen className="w-12 h-12 mx-auto text-muted-foreground mb-3" />
+                <p className="text-muted-foreground font-medium">{t("noPosts", { defaultValue: "Hiện tại chưa có bài viết nào được xuất bản." })}</p>
+              </div>
+            )
           )}
 
           {/* Pagination Controls */}
           {pagination && pagination.lastPage > 1 && (
-            <div className="flex items-center justify-center gap-2 pt-8 border-t dark:border-zinc-800">
+            <div className="flex items-center justify-center gap-2 pt-12">
               {/* Previous Button */}
               <Link
                 href={page > 1 ? `/?page=${page - 1}` : '#'}
                 className={`px-4 py-2 text-xs font-bold rounded-xl border transition-all flex items-center gap-1 ${
                   page <= 1
-                    ? 'opacity-50 pointer-events-none text-zinc-400 border-zinc-200 dark:border-zinc-800'
-                    : 'text-zinc-700 hover:bg-gray-50 border-gray-200 dark:text-zinc-300 dark:border-zinc-800 dark:hover:bg-zinc-950'
+                    ? 'opacity-50 pointer-events-none text-zinc-400 border-[#E2E8F0] dark:border-[#2d2d30]'
+                    : 'text-zinc-700 hover:bg-muted/50 border-[#E2E8F0] dark:text-zinc-300 dark:border-[#2d2d30]'
                 }`}
               >
                 {common("prev", { defaultValue: "Trước" })}
@@ -274,10 +342,10 @@ function HomePageContent() {
                   <Link
                     key={p}
                     href={`/?page=${p}`}
-                    className={`w-9 h-9 flex items-center justify-center text-xs font-bold rounded-xl transition-all ${
+                    className={`w-9 h-9 flex items-center justify-center text-xs font-bold rounded-xl transition-all border ${
                       isActive
-                        ? 'bg-[#3498db] text-white'
-                        : 'border border-gray-200 hover:bg-gray-50 text-zinc-700 dark:border-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-950'
+                        ? 'bg-primary text-white border-primary shadow-md shadow-primary/20'
+                        : 'border-[#E2E8F0] hover:bg-muted/50 text-zinc-700 dark:border-[#2d2d30] dark:text-zinc-300'
                     }`}
                   >
                     {p}
@@ -290,56 +358,83 @@ function HomePageContent() {
                 href={page < pagination.lastPage ? `/?page=${page + 1}` : '#'}
                 className={`px-4 py-2 text-xs font-bold rounded-xl border transition-all flex items-center gap-1 ${
                   page >= pagination.lastPage
-                    ? 'opacity-50 pointer-events-none text-zinc-400 border-zinc-200 dark:border-zinc-800'
-                    : 'text-zinc-700 hover:bg-gray-50 border-gray-200 dark:text-zinc-300 dark:border-zinc-800 dark:hover:bg-zinc-950'
+                    ? 'opacity-50 pointer-events-none text-zinc-400 border-[#E2E8F0] dark:border-[#2d2d30]'
+                    : 'text-zinc-700 hover:bg-muted/50 border-[#E2E8F0] dark:text-zinc-300 dark:border-[#2d2d30]'
                 }`}
               >
                 {common("next", { defaultValue: "Sau" })}
               </Link>
             </div>
           )}
+        </section>
 
-          {posts.length === 0 && (
-            <div className="text-center py-12 border rounded-2xl border-dashed">
-              <BookOpen className="w-12 h-12 mx-auto text-muted-foreground mb-3" />
-              <p className="text-muted-foreground font-medium">{t("noPosts", { defaultValue: "Hiện tại chưa có bài viết nào được xuất bản." })}</p>
+        {/* Sidebar Area */}
+        {!search && (
+          <aside className="lg:w-[32%] space-y-12 text-left">
+            {/* Categories Section */}
+            <div className="bg-white dark:bg-zinc-900 rounded-2xl p-8 border border-outline-variant shadow-sm">
+              <h3 className="text-xl font-bold text-on-surface mb-4 flex items-center gap-3">
+                <span className="w-1.5 h-8 bg-primary rounded-full"></span>
+                {t("hotCategories", { defaultValue: "DANH MỤC NỔI BẬT" })}
+              </h3>
+              <div className="space-y-3">
+                {categories.map((cat) => (
+                  <Link
+                    key={cat.id}
+                    href={`/forum/${cat.slug}`}
+                    className="flex items-center justify-between p-2 rounded-xl hover:bg-surface-container-low transition-all border border-transparent hover:border-outline-variant group"
+                  >
+                    <span className="text-on-surface-variant font-semibold group-hover:text-primary transition-colors text-sm">
+                      {cat.name}
+                    </span>
+                    <ArrowRight className="w-4 h-4 text-outline-variant group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                ))}
+                {categories.length === 0 && (
+                  <p className="text-xs text-muted-foreground text-center">{t("loadingCategories", { defaultValue: "Đang tải danh mục..." })}</p>
+                )}
+              </div>
             </div>
-          )}
-        </div>
 
-        {/* Right Column: Sidebar */}
-        <div className="space-y-8">
-          {/* Sidebar Hot Categories Widget */}
-          <div className="rounded-xl border bg-card p-6 shadow-xs">
-            <h3 className="text-sm font-bold text-muted-foreground dark:text-primary uppercase tracking-wider pb-2 border-b mb-4">
-              {t("hotCategories", { defaultValue: "Danh mục nổi bật" })}
-            </h3>
-            <div className="flex flex-col gap-2">
-              {categories.map((cat) => (
-                <Link
-                  key={cat.id}
-                  href={`/forum/${cat.slug}`}
-                  className="flex items-center justify-between p-3 rounded-lg border hover:bg-muted/50 transition-all group"
+            {/* Hot Posts Widget */}
+            <HotPostsWidget />
+
+            {/* Top Authors Widget */}
+            <TopAuthorsWidget />
+
+            {/* Newsletter Section */}
+            <div className="bg-primary dark:bg-[#0047ab] rounded-2xl p-10 text-white shadow-2xl shadow-primary/30 dark:shadow-[#0047ab]/30 relative overflow-hidden">
+              <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-white/10 rounded-full blur-3xl"></div>
+              <h3 className="text-2xl font-black mb-4">
+                {t("newsletter.title", { defaultValue: "AI Daily Brief" })}
+              </h3>
+              <p className="text-white/80 text-sm mb-8 leading-relaxed">
+                {t("newsletter.description", { defaultValue: "Cập nhật những tin tức AI quan trọng nhất, được tổng hợp gọn gàng trong hộp thư của bạn mỗi sáng." })}
+              </p>
+              <form onSubmit={handleNewsletterSubmit} className="space-y-4">
+                <input
+                  className="w-full bg-white/15 border border-white/20 rounded-xl py-3 px-5 text-white placeholder:text-white/50 focus:ring-2 focus:ring-white/30 focus:outline-none transition-all text-sm"
+                  placeholder={t("newsletter.placeholder", { defaultValue: "Email của bạn..." })}
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  maxLength={100}
+                  required
+                />
+                <button 
+                  type="submit"
+                  className="w-full bg-white text-primary dark:text-[#0047ab] font-black py-3 rounded-xl hover:bg-primary-container hover:scale-[1.02] active:scale-[0.98] transition-all text-sm cursor-pointer"
                 >
-                  <span className="font-semibold text-xs text-zinc-800 dark:text-zinc-200 group-hover:text-primary">
-                    {cat.name}
-                  </span>
-                  <ArrowRight className="w-3.5 h-3.5 text-muted-foreground group-hover:translate-x-1 transition-transform" />
-                </Link>
-              ))}
-              {categories.length === 0 && (
-                <p className="text-xs text-muted-foreground text-center">{t("loadingCategories", { defaultValue: "Đang tải danh mục..." })}</p>
-              )}
+                  {t("newsletter.button", { defaultValue: "Đăng ký ngay" })}
+                </button>
+              </form>
+              <p className="text-[10px] text-center mt-6 text-white/50">
+                {t("newsletter.disclaimer", { defaultValue: "Chúng tôi cam kết bảo mật thông tin và không spam." })}
+              </p>
             </div>
-          </div>
-
-          {/* Hot Posts Async Widget */}
-          <HotPostsWidget />
-
-          {/* Top Authors Async Widget */}
-          <TopAuthorsWidget />
-        </div>
-      </section>
+          </aside>
+        )}
+      </div>
     </div>
   );
 }
@@ -349,31 +444,33 @@ function HotPostsWidget() {
   const t = useTranslations("HomePage");
 
   return (
-    <div className="rounded-xl border bg-card p-6 shadow-xs">
-      <h3 className="text-sm font-bold text-muted-foreground dark:text-primary uppercase tracking-wider pb-2 border-b mb-4 flex items-center gap-1.5">
-        <span>🔥</span> {t("hotPosts", { defaultValue: "Bài viết đang HOT" })}
+    <div className="bg-white dark:bg-zinc-900 rounded-2xl p-6 border border-outline-variant shadow-sm overflow-hidden relative text-left">
+      <div className="absolute -top-4 -right-4 opacity-5 rotate-12 pointer-events-none select-none text-red-500">
+        <Flame size={120} strokeWidth={1.5} />
+      </div>
+      <h3 className="text-xl font-bold text-on-surface mb-6 flex items-center gap-3 relative z-10">
+        <span className="w-1.5 h-8 bg-red-500 rounded-full"></span>
+        {t("hotPosts", { defaultValue: "BÀI VIẾT ĐANG HOT" })}
       </h3>
       {isLoading ? (
-        <div className="space-y-2">
-          {[1, 2, 3].map((n) => (
-            <div key={n} className="h-6 bg-muted rounded animate-pulse" />
+        <div className="space-y-4 relative z-10 animate-pulse">
+          {[1, 2, 3, 4].map((n) => (
+            <div key={n} className="h-4 bg-muted rounded" />
           ))}
         </div>
       ) : (
-        <div className="flex flex-col gap-3">
+        <div className="space-y-8 relative z-10">
           {posts.map((post, index) => (
-            <Link
-              key={post.id}
-              href={`/posts/${post.id}`}
-              className="flex items-center gap-3 group text-xs text-muted-foreground dark:text-zinc-300 hover:text-primary transition-colors"
-            >
-              <div className="w-6 h-6 shrink-0 flex items-center justify-center rounded-md font-black italic text-xs bg-muted text-muted-foreground">
-                {index + 1}
-              </div>
-              <span className="font-semibold line-clamp-2 min-w-0">
-                {post.title}
+            <div key={post.id} className="flex gap-4 group cursor-pointer">
+              <span className="text-4xl font-black text-outline-variant/30 group-hover:text-primary transition-colors italic">
+                {String(index + 1).padStart(2, '0')}
               </span>
-            </Link>
+              <p className="text-sm font-bold leading-snug group-hover:text-primary transition-colors text-on-surface line-clamp-2">
+                <Link href={`/posts/${post.id}`}>
+                  {post.title}
+                </Link>
+              </p>
+            </div>
           ))}
           {posts.length === 0 && (
             <p className="text-xs text-muted-foreground text-center">{t("noHotPosts", { defaultValue: "Chưa có bài viết nổi bật." })}</p>
@@ -384,45 +481,55 @@ function HotPostsWidget() {
   );
 }
 
+interface TopAuthor {
+  id: number;
+  name: string;
+  avatar_url?: string | null;
+  avatar?: string | null;
+  posts_count: number;
+  total_likes?: number;
+}
+
 function TopAuthorsWidget() {
   const { authors, isLoading } = useTopAuthors();
   const t = useTranslations("HomePage");
 
   return (
-    <div className="rounded-xl border bg-card p-6 shadow-xs">
-      <h3 className="text-sm font-bold text-muted-foreground dark:text-primary uppercase tracking-wider pb-2 border-b mb-4 flex items-center gap-1.5">
-        <span>👑</span> {t("topAuthors", { defaultValue: "Tác giả yêu thích" })}
+    <div className="bg-white dark:bg-zinc-900 rounded-2xl p-6 border border-outline-variant shadow-sm text-left">
+      <h3 className="text-xl font-bold text-on-surface mb-6 flex items-center gap-3">
+        <span className="w-1.5 h-8 bg-amber-500 rounded-full"></span>
+        {t("topAuthors", { defaultValue: "TÁC GIẢ YÊU THÍCH" })}
       </h3>
       {isLoading ? (
-        <div className="space-y-3">
+        <div className="space-y-3 animate-pulse">
           {[1, 2, 3].map((n) => (
-            <div key={n} className="h-10 bg-muted rounded-lg animate-pulse" />
+            <div key={n} className="h-12 bg-muted rounded-xl" />
           ))}
         </div>
       ) : (
         <div className="flex flex-col gap-3">
-          {authors.map((author: any) => (
+          {authors.map((author: TopAuthor) => (
             <Link
               key={author.id}
               href={`/users/${author.id}`}
-              className="flex items-center justify-between p-2.5 rounded-lg border hover:bg-muted/50 transition-all group"
+              className="flex items-center justify-between p-1 rounded-xl border border-transparent hover:border-outline-variant hover:bg-surface-container-low transition-all group"
             >
-              <div className="flex items-center gap-2 min-w-0">
+              <div className="flex items-center gap-3 min-w-0">
                 <img
                   src={author.avatar_url || author.avatar || `https://api.dicebear.com/7.x/adventurer/svg?seed=${author.id || 'U'}`}
                   alt={author.name}
-                  className="w-8 h-8 rounded-full object-cover shrink-0 border"
+                  className="w-9 h-9 rounded-full object-cover shrink-0 border border-outline-variant"
                 />
                 <div className="min-w-0">
-                  <p className="text-xs font-bold text-muted-foreground dark:text-zinc-200 group-hover:text-primary transition-colors truncate">
+                  <p className="text-sm font-bold text-on-surface group-hover:text-primary transition-colors truncate">
                     {author.name}
                   </p>
-                  <p className="text-[10px] text-muted-foreground truncate">
+                  <p className="text-[11px] text-on-surface-variant font-medium truncate">
                     {t("postsCount", { count: author.posts_count, defaultValue: `${author.posts_count} bài viết` })}
                   </p>
                 </div>
               </div>
-              <span className="text-xs font-bold text-[#e5127d] bg-[#e5127d]/5 px-2 py-0.5 rounded-full shrink-0">
+              <span className="text-xs font-bold text-[#e5127d] bg-[#e5127d]/5 px-2.5 py-1 rounded-full shrink-0 flex items-center gap-1">
                 ❤️ {author.total_likes}
               </span>
             </Link>
@@ -439,7 +546,7 @@ function TopAuthorsWidget() {
 export default function HomePage() {
   return (
     <Suspense fallback={
-      <div className="space-y-8 py-6 animate-pulse">
+      <div className="space-y-8 py-6 animate-pulse text-left">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-96">
           <div className="lg:col-span-2 bg-muted rounded-2xl h-full" />
           <div className="space-y-4 h-full flex flex-col justify-between">

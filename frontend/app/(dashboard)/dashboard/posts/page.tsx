@@ -203,7 +203,7 @@ export default function DashboardPostsPage() {
           </div>
 
           {/* Posts Table */}
-          <div className="border border-border rounded-xl bg-card overflow-hidden">
+          <div className="border border-[#E2E8F0] dark:border-[#2d2d30] rounded-xl bg-card overflow-hidden">
             {isTableLoading ? (
               <div className="flex flex-col items-center justify-center p-12 h-64">
                 <Spinner className="w-8 h-8" />
@@ -329,14 +329,14 @@ export default function DashboardPostsPage() {
 
           {/* Pagination */}
           {pagination && pagination.lastPage > 1 && (
-            <div className="flex items-center justify-center gap-2 pt-6 border-t dark:border-zinc-800">
+            <div className="flex items-center justify-center gap-2 pt-6 border-t border-[#E2E8F0] dark:border-[#2d2d30]">
               <button
                 onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
                 disabled={page === 1}
                 className={`px-4 py-2 text-xs font-bold rounded-xl border transition-all flex items-center gap-1 cursor-pointer disabled:cursor-not-allowed ${
                   page <= 1
-                    ? 'opacity-50 pointer-events-none text-zinc-400 border-zinc-200 dark:border-zinc-800'
-                    : 'text-zinc-700 hover:bg-gray-50 border-gray-200 dark:text-zinc-300 dark:border-zinc-800 dark:hover:bg-zinc-950'
+                    ? 'opacity-50 pointer-events-none text-zinc-400 border-[#E2E8F0] dark:border-[#2d2d30]'
+                    : 'text-zinc-700 hover:bg-muted/50 border-[#E2E8F0] dark:text-zinc-300 dark:border-[#2d2d30]'
                 }`}
               >
                 {t('prev')}
@@ -349,10 +349,10 @@ export default function DashboardPostsPage() {
                   <button
                     key={p}
                     onClick={() => setPage(p)}
-                    className={`w-9 h-9 flex items-center justify-center text-xs font-bold rounded-xl transition-all cursor-pointer ${
+                    className={`w-9 h-9 flex items-center justify-center text-xs font-bold rounded-xl transition-all cursor-pointer border ${
                       isActive
-                        ? 'bg-[#3498db] text-white'
-                        : 'border border-gray-200 hover:bg-gray-50 text-zinc-700 dark:border-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-950'
+                        ? 'bg-primary text-white border-primary shadow-md shadow-primary/20'
+                        : 'border-[#E2E8F0] hover:bg-muted/50 text-zinc-700 dark:border-[#2d2d30] dark:text-zinc-300'
                     }`}
                   >
                     {p}
@@ -365,8 +365,8 @@ export default function DashboardPostsPage() {
                 disabled={page === pagination.lastPage}
                 className={`px-4 py-2 text-xs font-bold rounded-xl border transition-all flex items-center gap-1 cursor-pointer disabled:cursor-not-allowed ${
                   page >= pagination.lastPage
-                    ? 'opacity-50 pointer-events-none text-zinc-400 border-zinc-200 dark:border-zinc-800'
-                    : 'text-zinc-700 hover:bg-gray-50 border-gray-200 dark:text-zinc-300 dark:border-zinc-800 dark:hover:bg-zinc-950'
+                    ? 'opacity-50 pointer-events-none text-zinc-400 border-[#E2E8F0] dark:border-[#2d2d30]'
+                    : 'text-zinc-700 hover:bg-muted/50 border-[#E2E8F0] dark:text-zinc-300 dark:border-[#2d2d30]'
                 }`}
               >
                 {t('next')}

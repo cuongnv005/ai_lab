@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl';
 export const Footer: React.FC = () => {
   const t = useTranslations("Footer");
   return (
-    <footer className="w-full border-t bg-card py-10 mt-auto text-sm text-muted-foreground">
+    <footer className="w-full border-t border-[#E2E8F0] dark:border-[#2d2d30] bg-card py-10 mt-auto text-sm text-muted-foreground">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Logo & Description */}
@@ -56,7 +56,7 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t mt-8 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+        <div className="border-t border-[#E2E8F0] dark:border-[#2d2d30] mt-8 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
           <span>&copy; {new Date().getFullYear()} AI_Lab. All rights reserved.</span>
           <div className="flex gap-4">
             <a href="#" className="hover:underline">Facebook</a>

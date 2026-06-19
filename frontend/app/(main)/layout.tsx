@@ -1,9 +1,27 @@
+"use client";
+
 import React, { Suspense } from "react";
 import { Header } from "@/shared/components/layout/header";
 import { Footer } from "@/shared/components/layout/footer";
 import { ScrollToTop } from "@/shared/components/layout/scroll-to-top";
+import { useSearchParams } from "next/navigation";
+import { cn } from "@/shared/lib/utils";
 
-export default async function MainLayout({
+function MainLayoutContent({ children }: { children: React.ReactNode }) {
+  const searchParams = useSearchParams();
+  const search = searchParams.get('search');
+
+  return (
+    <main className={cn(
+      "flex-1 w-full mx-auto px-4 py-8",
+      search ? "max-w-4xl" : "max-w-7xl"
+    )}>
+      {children}
+    </main>
+  );
+}
+
+export default function MainLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -13,11 +31,10 @@ export default async function MainLayout({
       <Suspense fallback={<div className="h-16 border-b bg-background" />}>
         <Header />
       </Suspense>
-      <main className="flex-1 w-full max-w-7xl mx-auto px-4 py-8">
-        {children}
-      </main>
+      <Suspense fallback={<div className="flex-1 w-full max-w-7xl mx-auto px-4 py-8 animate-pulse" />}>
+        <MainLayoutContent>{children}</MainLayoutContent>
+      </Suspense>
       <Footer />
     </div>
   );
 }
-

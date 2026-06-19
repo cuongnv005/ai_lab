@@ -153,4 +153,46 @@ class UserUpdateProfileTest extends TestCase
             ->assertJsonPath('success', false)
             ->assertJsonPath('message', trans('response.unauthenticated'));
     }
+
+    /**
+     * Test that sending empty strings for nullable fields (like dob) normalizes them to null.
+     */
+    public function test_update_profile_converts_empty_strings_to_null_for_nullable_fields(): void
+    {
+        // Arrange
+        $user = User::factory()->create([
+            'name' => 'Original Name',
+            'status' => UserStatus::ACTIVE,
+            'dob' => '1990-01-01',
+            'hometown' => 'Original Town',
+        ]);
+
+        $payload = [
+            'name' => 'Updated Name',
+            'dob' => '',
+            'hometown' => '',
+            'bio' => '',
+        ];
+
+        // Act
+        $response = $this->actingAs($user, 'api')
+            ->putJson('/api/users/profile', $payload);
+
+        // Assert
+        $response->assertStatus(200)
+            ->assertJsonPath('success', true)
+            ->assertJsonPath('data.name', 'Updated Name')
+            ->assertJsonPath('data.dob', null)
+            ->assertJsonPath('data.hometown', null)
+            ->assertJsonPath('data.bio', null);
+
+        // Verify database has null values
+        $this->assertDatabaseHas('users', [
+            'id' => $user->id,
+            'name' => 'Updated Name',
+            'dob' => null,
+            'hometown' => null,
+            'bio' => null,
+        ]);
+    }
 }

@@ -56,6 +56,7 @@ class PostResource extends JsonResource
                     'email' => (string) $this->user->email,
                     'posts_count' => (int) $this->user->posts_count,
                     'rating_value' => (int) $this->user->total_likes,
+                    'role' => (string) ($this->user->roles->first()?->name ?? 'member'),
                     'created_at' => DateHelper::formatDateTime($this->user->created_at),
                 ];
             }),

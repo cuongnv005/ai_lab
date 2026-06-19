@@ -1,8 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Send, Loader2 } from 'lucide-react';
-import { Button } from '@bks/ds-system-sdk/components/ui/button';
+import { Loader2, Image as ImageIcon } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
 interface CommentFormProps {
@@ -33,7 +32,7 @@ export function CommentForm({ onSubmit, placeholder, isSubmitting: propIsSubmitt
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-3">
+    <form onSubmit={handleSubmit} className="glass-card rounded-xl p-4 mb-6">
       <div className="relative">
         <textarea
           value={content}
@@ -41,30 +40,29 @@ export function CommentForm({ onSubmit, placeholder, isSubmitting: propIsSubmitt
           placeholder={inputPlaceholder}
           disabled={isSubmitting}
           maxLength={1000}
-          className="w-full min-h-[100px] p-4 pb-8 rounded-xl bg-muted border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-ring resize-none transition-all"
+          className="w-full bg-transparent border-none focus:ring-0 text-sm resize-none min-h-[100px] text-on-surface focus:outline-none placeholder:text-on-surface-variant/50"
         />
-        <div className="absolute bottom-2.5 right-3 text-xs text-muted-foreground pointer-events-none">
-          {content.length}/1000
-        </div>
       </div>
-      <div className="flex justify-end">
-        <Button
-          type="submit"
-          disabled={!content.trim() || isSubmitting}
-          className="bg-blue-600 hover:bg-blue-500 text-white"
-        >
-          {isSubmitting ? (
-            <>
-              <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-              {t('sending')}
-            </>
-          ) : (
-            <>
-              <Send className="w-4 h-4 mr-2" />
-              {t('send')}
-            </>
-          )}
-        </Button>
+      <div className="flex justify-between items-center dark:border-[#2d2d30]/50">
+        <span className="text-[11px] text-on-surface-variant">
+          {content.length}/1000
+        </span>
+        <div className="flex items-center gap-1.5">
+          <button
+            type="submit"
+            disabled={!content.trim() || isSubmitting}
+            className="bg-primary text-white dark:bg-primary-container dark:text-on-primary-container px-3 py-1 rounded-md font-bold text-[11px] hover:brightness-110 active:scale-95 transition-all disabled:opacity-50 disabled:pointer-events-none cursor-pointer flex items-center gap-1"
+          >
+            {isSubmitting ? (
+              <>
+                <Loader2 className="w-3 h-3 animate-spin" />
+                <span>{t('sending')}</span>
+              </>
+            ) : (
+              <span>{t('send')}</span>
+            )}
+          </button>
+        </div>
       </div>
     </form>
   );

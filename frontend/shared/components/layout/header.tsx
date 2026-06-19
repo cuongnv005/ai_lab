@@ -57,38 +57,38 @@ export const Header: React.FC = () => {
   const isModerator = user?.roles?.includes('moderator');
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur-md supports-backdrop-filter:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b border-[#E2E8F0] dark:border-[#2d2d30] bg-background/95 backdrop-blur-md supports-backdrop-filter:bg-background/60">
       {/* Main Navbar */}
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         {/* Left: Logo & Nav Links */}
         <div className="flex items-center gap-8 h-full">
           <Link href="/" className="flex items-center space-x-2 font-black text-lg tracking-wider text-primary font-mono group">
-            <span className="bg-blue-600 text-white dark:bg-blue-500 px-1.5 py-0.5 rounded text-xs font-black group-hover:bg-blue-700 transition-colors">AI</span>
+            <span className="bg-primary text-white dark:bg-primary-container px-1.5 py-0.5 rounded text-xs font-black group-hover:bg-primary/90 transition-colors">AI</span>
             <span>LAB</span>
-            <span className="text-xs text-zinc-400 dark:text-zinc-500 font-light group-hover:text-blue-500 transition-colors">{"//_NET"}</span>
+            <span className="text-xs text-zinc-400 dark:text-zinc-500 font-light group-hover:text-primary transition-colors">{"//_NET"}</span>
           </Link>
 
           <nav className="hidden md:flex items-center gap-6 text-sm font-medium h-full">
             <Link 
               href="/" 
-              className={`transition-all hover:text-blue-600 dark:hover:text-blue-400 flex items-center gap-1.5 h-full relative px-1 ${
-                pathname === '/' ? 'text-blue-600 dark:text-blue-400 font-semibold' : 'text-muted-foreground'
+              className={`transition-all hover:text-primary flex items-center gap-1.5 h-full relative px-1 ${
+                pathname === '/' ? 'text-primary font-semibold' : 'text-muted-foreground'
               }`}
             >
               {t("home", { defaultValue: "Trang chủ" })}
               {pathname === '/' && (
-                <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-blue-600 dark:bg-blue-500 rounded-full" />
+                <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-primary rounded-full" />
               )}
             </Link>
             <Link 
               href="/forum" 
-              className={`transition-all hover:text-blue-600 dark:hover:text-blue-400 flex items-center gap-1.5 h-full relative px-1 ${
-                pathname.startsWith('/forum') ? 'text-blue-600 dark:text-blue-400 font-semibold' : 'text-muted-foreground'
+              className={`transition-all hover:text-primary flex items-center gap-1.5 h-full relative px-1 ${
+                pathname.startsWith('/forum') ? 'text-primary font-semibold' : 'text-muted-foreground'
               }`}
             >
               {t("forum", { defaultValue: "Diễn đàn thảo luận" })}
               {pathname.startsWith('/forum') && (
-                <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-blue-600 dark:bg-blue-500 rounded-full" />
+                <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-primary rounded-full" />
               )}
             </Link>
           </nav>
@@ -102,7 +102,7 @@ export const Header: React.FC = () => {
               placeholder={t("searchPlaceholder", { defaultValue: "Tìm kiếm bài viết..." })}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full h-9 rounded-full border bg-muted/50 px-4 pr-10 text-sm focus:outline-hidden focus:ring-1 focus:ring-blue-500"
+              className="w-full h-9 rounded-full border bg-muted/50 px-4 pr-10 text-sm focus:outline-hidden focus:ring-1 focus:ring-primary"
             />
             <button type="submit" className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-primary">
               <Search className="w-4 h-4" />
@@ -191,13 +191,13 @@ export const Header: React.FC = () => {
             <div className="hidden sm:flex items-center gap-2">
               <Link
                 href="/login"
-                className="px-4 py-2 text-sm font-semibold hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                className="px-4 py-2 text-sm font-semibold hover:text-primary transition-colors"
               >
                 {t("login", { defaultValue: "Đăng nhập" })}
               </Link>
               <Link
                 href="/register"
-                className="rounded-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 text-sm font-semibold transition-colors shadow-xs"
+                className="rounded-full bg-primary hover:bg-primary/90 text-white px-4 py-2 text-sm font-semibold transition-colors shadow-xs"
               >
                 {t("register", { defaultValue: "Đăng ký" })}
               </Link>
@@ -221,17 +221,48 @@ export const Header: React.FC = () => {
             <Link
               href="/"
               onClick={() => setMobileMenuOpen(false)}
-              className="text-sm font-medium hover:text-blue-600"
+              className="text-sm font-medium hover:text-primary"
             >
               {t("home", { defaultValue: "Trang chủ" })}
             </Link>
             <Link
               href="/forum"
               onClick={() => setMobileMenuOpen(false)}
-              className="text-sm font-medium hover:text-blue-600"
+              className="text-sm font-medium hover:text-primary"
             >
               {t("forum", { defaultValue: "Diễn đàn thảo luận" })}
             </Link>
+
+            <Link
+              href={`/users/${user?.id}`}
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-sm font-medium hover:text-primary"
+            >
+              <span>{t("myProfile", { defaultValue: "Hồ sơ của tôi" })}</span>
+            </Link>
+            <Link
+              href="/dashboard/posts"
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-sm font-medium hover:text-primary"
+            >
+              <span>{t("myPosts", { defaultValue: "Bài viết của tôi" })}</span>
+            </Link>
+
+            {(isAdmin || isModerator) && (
+              <Link
+                href={isAdmin ? "/admin/dashboard" : "/admin/approval-queue"}
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-sm font-medium hover:text-primary hover:bg-muted/85 transition-colors text-primary"
+              >
+                <span>{t("dashboard")}</span>
+              </Link>
+            )}
+            <button
+              onClick={handleLogout}
+              className="flex w-full cursor-pointer items-center gap-2 text-sm rounded-lg hover:bg-red-500/10 text-red-600 dark:text-red-400 transition-colors text-left"
+            >
+              <span>{t("logout", { defaultValue: "Đăng xuất" })}</span>
+            </button>
 
             <form onSubmit={handleSearchSubmit} className="relative w-full mt-2">
               <input
@@ -263,7 +294,7 @@ export const Header: React.FC = () => {
                 <Link
                   href="/register"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="w-full text-center py-2 text-sm font-semibold rounded-lg bg-blue-600 text-white"
+                  className="w-full text-center py-2 text-sm font-semibold rounded-lg bg-primary text-white"
                 >
                   {t("register", { defaultValue: "Đăng ký" })}
                 </Link>
@@ -275,7 +306,7 @@ export const Header: React.FC = () => {
       {isLoggingOut && mounted && createPortal(
         <div className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-background/80 backdrop-blur-md animate-in fade-in duration-200">
           <div className="flex flex-col items-center gap-4 p-6 rounded-2xl bg-card border shadow-2xl max-w-xs w-full mx-4 text-center">
-            <div className="relative flex h-16 w-16 items-center justify-center rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400">
+            <div className="relative flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 text-primary">
               <Loader2 className="w-8 h-8 animate-spin" />
             </div>
             <div className="space-y-1">

@@ -27,11 +27,11 @@ export default function TagPostsPage({ params }: TagPostsPageProps) {
     return (
       <div className="space-y-6 py-6 animate-pulse">
         <div className="h-4 bg-muted rounded w-32 mb-4" />
-        <div className="border-b pb-6 space-y-3">
+        <div className="pb-6 space-y-3">
           <div className="h-5 bg-muted rounded w-28" />
           <div className="h-8 bg-muted rounded w-56" />
         </div>
-        <div className="border border-border rounded-xl overflow-hidden bg-card divide-y divide-border shadow-xs">
+        <div className="border border-[#E2E8F0] dark:border-[#2d2d30] rounded-xl overflow-hidden bg-card divide-y divide-border shadow-xs">
           {[1, 2, 3, 4, 5].map((n) => (
             <div key={n} className="flex items-center p-4 gap-4">
               <div className="h-10 w-10 rounded-full bg-muted flex-shrink-0" />
@@ -80,7 +80,7 @@ export default function TagPostsPage({ params }: TagPostsPageProps) {
       </div>
 
       {/* Header */}
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b pb-6">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pb-6">
         <div className="space-y-2">
           <span className="bg-emerald-500/10 text-emerald-600 dark:bg-emerald-500/20 dark:text-emerald-400 text-[10px] font-bold px-2.5 py-1 rounded uppercase tracking-wider">
             {t("tagLabel", { defaultValue: "Thẻ chủ đề" })}

@@ -1,4 +1,4 @@
-import { Be_Vietnam_Pro } from "next/font/google";
+import { Be_Vietnam_Pro, Inter, Hanken_Grotesk, JetBrains_Mono } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 import { themeInitScript } from "@/shared/lib/theme";
@@ -14,6 +14,24 @@ const beVietnamPro = Be_Vietnam_Pro({
   variable: "--font-be-vietnam",
   subsets: ["latin", "vietnamese"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+});
+
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+});
+
+const hankenGrotesk = Hanken_Grotesk({
+  variable: "--font-hanken-grotesk",
+  subsets: ["latin"],
+  weight: ["600", "700"],
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
+  subsets: ["latin"],
+  weight: ["500"],
 });
 
 export const metadata = {
@@ -32,7 +50,7 @@ export default async function RootLayout({
   return (
     <html
       lang={locale}
-      className={`${beVietnamPro.variable}`}
+      className={`${beVietnamPro.variable} ${inter.variable} ${hankenGrotesk.variable} ${jetbrainsMono.variable}`}
       suppressHydrationWarning
     >
       <head>

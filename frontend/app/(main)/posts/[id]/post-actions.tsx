@@ -8,6 +8,13 @@ import { Button } from '@bks/ds-system-sdk/components/ui/button';
 import { toast } from 'sonner';
 import { useTranslations } from 'next-intl';
 
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@bks/ds-system-sdk/components/ui/tooltip';
+
 interface PostActionsProps {
   post: Post;
   isAuthenticated: boolean;
@@ -29,6 +36,7 @@ export function PostActions({
 }: PostActionsProps) {
   const t = useTranslations("PostDetail.postActions");
   const isOwner = currentUser?.id === String(post?.user?.id);
+  
   const handleShare = async () => {
     try {
       await navigator.clipboard.writeText(window.location.href);
@@ -59,64 +67,77 @@ export function PostActions({
 
   if (isSidebar) {
     return (
-      <div className="flex flex-col items-center gap-6 py-4">
+      <div className="sticky top-28 flex flex-col gap-4 items-center">
         {/* Like Button */}
-        <div className="flex flex-col items-center gap-1 group">
-          <button
-            onClick={handleLike}
-            disabled={isLiking}
-            className={`w-12 h-12 rounded-full border flex items-center justify-center transition-all ${isLiking ? 'cursor-not-allowed opacity-60' : 'cursor-pointer'} ${
-              post.is_liked
-                ? 'bg-red-500/10 border-red-500/30 text-red-500'
-                : 'bg-background hover:bg-zinc-50 border-border hover:border-zinc-300 dark:hover:bg-zinc-900 text-zinc-500 hover:text-zinc-800'
-            }`}
-            title={t('like')}
-          >
-            <Heart className={`w-5 h-5 transition-transform group-hover:scale-110 ${post.is_liked ? 'fill-current' : ''}`} />
-          </button>
-          <span className="text-xs font-semibold text-zinc-500">{post.likes_count || 0}</span>
-        </div>
+        <button 
+          onClick={handleLike}
+          disabled={isLiking}
+          className="flex flex-col items-center group cursor-pointer focus:outline-none"
+        >
+          <div className={`w-10 h-10 rounded-full glass-card flex items-center justify-center transition-all ${
+            post.is_liked
+              ? 'bg-red-500/10 text-red-500 border-red-500/30'
+              : 'group-hover:bg-primary/5 dark:group-hover:bg-primary-container dark:group-hover:text-on-primary-container text-on-surface-variant'
+          }`}>
+            <Heart size={18} className={`${post.is_liked ? 'fill-current' : ''}`} />
+          </div>
+          <span className="text-[11px] font-medium mt-1 text-on-surface-variant">
+            {post.likes_count || 0}
+          </span>
+        </button>
 
         {/* Share Button */}
-        <div className="flex flex-col items-center gap-1 group">
-          <button
-            onClick={handleShare}
-            className="w-12 h-12 rounded-full border bg-background hover:bg-zinc-50 border-border hover:border-zinc-300 dark:hover:bg-zinc-900 text-zinc-500 hover:text-zinc-800 flex items-center justify-center transition-all cursor-pointer"
-            title={t('share')}
-          >
-            <Share2 className="w-5 h-5 transition-transform group-hover:scale-110" />
-          </button>
-        </div>
+        <button 
+          onClick={handleShare}
+          className="flex flex-col items-center group cursor-pointer focus:outline-none"
+        >
+          <div className="w-10 h-10 rounded-full glass-card flex items-center justify-center group-hover:bg-surface-container-highest text-on-surface-variant transition-all">
+            <Share2 size={18} />
+          </div>
+        </button>
 
         {/* Comment Button */}
-        <div className="flex flex-col items-center gap-1 group">
-          <button
-            onClick={scrollToComments}
-            className="w-12 h-12 rounded-full border bg-background hover:bg-zinc-50 border-border hover:border-zinc-300 dark:hover:bg-zinc-900 text-zinc-500 hover:text-zinc-800 flex items-center justify-center transition-all cursor-pointer"
-            title={t('comment')}
-          >
-            <MessageCircle className="w-5 h-5 transition-transform group-hover:scale-110" />
-          </button>
-          <span className="text-xs font-semibold text-zinc-500">{post.comments_count || 0}</span>
-        </div>
-
-        {/* Divider */}
-        {isAuthenticated && !isOwner && <div className="w-8 h-[1px] bg-border my-2" />}
+        <button 
+          onClick={scrollToComments}
+          className="flex flex-col items-center group cursor-pointer focus:outline-none"
+        >
+          <div className="w-10 h-10 rounded-full glass-card flex items-center justify-center group-hover:bg-surface-container-highest text-on-surface-variant transition-all">
+            <MessageCircle size={18} />
+          </div>
+          <span className="text-[11px] font-medium mt-1 text-on-surface-variant">
+            {post.comments_count || 0}
+          </span>
+        </button>
 
         {/* Report Button */}
         {isAuthenticated && !isOwner && (
-          <button
-            onClick={onReport}
-            disabled={post.is_reported}
-            className={`w-10 h-10 rounded-full flex items-center justify-center transition-all ${
-              post.is_reported 
-                ? 'cursor-not-allowed opacity-40 text-zinc-400 dark:text-zinc-600' 
-                : 'hover:bg-red-500/10 text-zinc-400 hover:text-red-500 cursor-pointer'
-            }`}
-            title={post.is_reported ? t('alreadyReported') : t('report')}
-          >
-            <Flag className="w-4 h-4" />
-          </button>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger
+                render={
+                  <div
+                    className={`flex flex-col items-center group mt-2 ${
+                      post.is_reported ? 'opacity-40 cursor-not-allowed' : 'cursor-pointer'
+                    }`}
+                  >
+                    <button
+                      onClick={post.is_reported ? undefined : onReport}
+                      className="focus:outline-none"
+                    >
+                      <div className={`w-10 h-10 rounded-full glass-card flex items-center justify-center text-on-surface-variant/60 transition-all ${
+                        post.is_reported ? '' : 'group-hover:bg-red-500/10 group-hover:text-red-500'
+                      }`}>
+                        <Flag size={18} />
+                      </div>
+                    </button>
+                  </div>
+                }
+              />
+              <TooltipContent side="left">
+                {post.is_reported ? t('alreadyReported') : t('report')}
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
         )}
       </div>
     );
@@ -124,43 +145,43 @@ export function PostActions({
 
   // Horizontal version for mobile/inline
   return (
-    <div className="flex items-center flex-wrap gap-3 py-6 border-y border-border mt-6">
+    <div className="flex items-center flex-wrap gap-4 py-4 border-y border-[#E2E8F0] dark:border-[#2d2d30] mt-6">
       <Button
         variant="ghost"
         size="sm"
         onClick={handleLike}
         disabled={isLiking}
-        className={`flex items-center gap-2 transition-all ${
+        className={`flex items-center gap-2 transition-all cursor-pointer ${
           post.is_liked
             ? 'text-red-500 hover:text-red-400 font-semibold'
-            : 'text-muted-foreground hover:text-foreground'
+            : 'text-on-surface-variant hover:text-on-surface'
         }`}
       >
-        <Heart className={`w-5 h-5 ${post.is_liked ? 'fill-current' : ''}`} />
-        <span>{post.likes_count || 0} {t('likes')}</span>
+        <Heart size={18} className={`${post.is_liked ? 'fill-current' : ''}`} />
+        <span>{post.likes_count || 0}</span>
       </Button>
 
       <Button
         variant="ghost"
         size="sm"
         onClick={handleShare}
-        className="text-muted-foreground hover:text-foreground flex items-center gap-2"
+        className="text-on-surface-variant hover:text-on-surface flex items-center gap-2 cursor-pointer"
       >
-        <Share2 className="w-5 h-5" />
-        <span>{t('share')}</span>
+        <Share2 size={18} />
+        <span>Chia sẻ</span>
       </Button>
 
       <Button
         variant="ghost"
         size="sm"
         onClick={scrollToComments}
-        className="text-muted-foreground hover:text-foreground flex items-center gap-2"
+        className="text-on-surface-variant hover:text-on-surface flex items-center gap-2 cursor-pointer"
       >
-        <MessageCircle className="w-5 h-5" />
-        <span>{post.comments_count || 0} {t('comments')}</span>
+        <MessageCircle size={18} />
+        <span>{post.comments_count || 0}</span>
       </Button>
 
-      <div className="flex-1" />
+      <div className="flex-grow" />
 
       {isAuthenticated && !isOwner && (
         <Button
@@ -168,14 +189,13 @@ export function PostActions({
           size="sm"
           onClick={onReport}
           disabled={post.is_reported}
-          className={`text-muted-foreground flex items-center gap-2 ${
+          className={`flex items-center gap-2 cursor-pointer ${
             post.is_reported 
-              ? 'opacity-40 cursor-not-allowed text-zinc-400 dark:text-zinc-600' 
-              : 'hover:text-red-500'
+              ? 'opacity-40 cursor-not-allowed text-on-surface-variant/40' 
+              : 'text-on-surface-variant hover:text-red-500'
           }`}
-          title={post.is_reported ? t('alreadyReported') : t('report')}
         >
-          <Flag className="w-5 h-5" />
+          <Flag size={18} />
           <span>{t('report')}</span>
         </Button>
       )}

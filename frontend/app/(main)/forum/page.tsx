@@ -95,7 +95,7 @@ export default function ForumPage() {
   return (
     <div className="space-y-8 py-6 max-w-5xl mx-auto">
       {/* Page Header */}
-      <div className="border-b pb-4">
+      <div className="border-b border-[#E2E8F0] dark:border-[#2d2d30] pb-4">
         <h1 className="text-2xl font-extrabold tracking-tight text-zinc-900 dark:text-white uppercase flex items-center gap-2">
           <span>💬</span> {t("title", { defaultValue: "Diễn đàn thảo luận" })}
         </h1>
@@ -114,7 +114,7 @@ export default function ForumPage() {
           return (
             <div
               key={category.id}
-              className="bg-card border border-border rounded-2xl overflow-hidden shadow-xs hover:shadow-md transition-all duration-300"
+              className="bg-card border border-[#E2E8F0] dark:border-[#2d2d30] rounded-2xl overflow-hidden shadow-xs hover:shadow-md transition-all duration-300"
             >
               {/* Category Info Header */}
               <div className="p-5 md:p-6 flex items-start justify-between gap-4 bg-muted/20">
@@ -161,8 +161,8 @@ export default function ForumPage() {
 
               {/* Latest Posts List (collapsible) */}
               {!isCollapsed && (
-                <div className="border-t border-border bg-card">
-                  <div className="p-6">
+                <div className="border-t border-[#E2E8F0] dark:border-[#2d2d30] bg-card">
+                  <div className="p-6 pb-4">
                     <ul className="space-y-3">
                       {latestPosts.map((post: Post) => {
                         const avatarUrl = post.user?.avatar_url || post.user?.avatar || `https://api.dicebear.com/7.x/adventurer/svg?seed=${post.user?.id || 'A'}`;
@@ -219,7 +219,7 @@ export default function ForumPage() {
                       )}
 
                       {/* View All Button */}
-                      <li className="pt-3 border-t border-border flex justify-end">
+                      <li className="pt-3 border-t border-[#E2E8F0] dark:border-[#2d2d30] flex justify-end">
                         <Link
                           href={`/forum/${category.slug}`}
                           className="text-xs font-bold text-primary hover:text-primary/80 hover:underline flex items-center gap-1"

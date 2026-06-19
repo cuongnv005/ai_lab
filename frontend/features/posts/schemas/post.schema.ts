@@ -27,6 +27,7 @@ export const UserSummarySchema = z.object({
   avatar_url: z.string().nullable().optional(),
   posts_count: z.number().optional(),
   rating_value: z.number().optional(),
+  role: z.string().optional(),
   created_at: z.string().optional(),
 });
 

@@ -45,7 +45,7 @@ class AuthService extends Service
         if ($user->status === UserStatus::INACTIVE) {
             Auth::guard('web')->logout();
 
-            throw new InputException('Tài khoản của bạn đã bị hủy kích hoạt.', 401);
+            throw new InputException(__('auth.deactivated'), 401);
         }
 
         if ($user->status === UserStatus::BANNED) {
@@ -57,7 +57,7 @@ class AuthService extends Service
             } else {
                 Auth::guard('web')->logout();
 
-                throw new InputException('Tài khoản của bạn đã bị khóa.', 401);
+                throw new InputException(__('auth.banned'), 401);
             }
         }
 
