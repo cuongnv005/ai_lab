@@ -2,7 +2,8 @@
 
 import { use, useState } from "react";
 import { useUserProfile, useUserPosts, useUpdateUserProfile } from "@/features/user-profile/hooks/use-user-profile";
-import { AvatarUpload, ProfileInfo, ProfileEditForm, UserPostList } from "@/features/user-profile/components";
+import { type UserProfile } from "@/features/user-profile/services/user-profile.repository";
+import { AvatarUpload, ProfileInfo, ProfileEditForm, UserPostList, type ProfileFormValues } from "@/features/user-profile/components";
 import { useAuth } from "@/features/auth";
 import { Button, Dialog, DialogContent, DialogTrigger } from "@/bks/ds-system-sdk";
 import { toast } from "sonner";
@@ -33,7 +34,7 @@ export default function UserProfilePage(props: { params: Promise<{ id: string }>
     return <div className="p-8 text-center text-red-500">{t('userNotFound')}</div>;
   }
 
-  const handleUpdate = async (data: any) => {
+  const handleUpdate = async (data: Partial<ProfileFormValues> & { avatar?: string }) => {
     try {
       // Backend requires name, and expects avatar_url instead of avatar
       const payload = {
@@ -51,16 +52,17 @@ export default function UserProfilePage(props: { params: Promise<{ id: string }>
       }
       
       // Remove fields not needed by backend
-      delete payload.avatar;
-      delete payload.id;
-      delete payload.created_at;
-      delete payload.gender_label;
+      const mutablePayload = payload as Record<string, unknown>;
+      delete mutablePayload.avatar;
+      delete mutablePayload.id;
+      delete mutablePayload.created_at;
+      delete mutablePayload.gender_label;
 
-      await updateMutation.mutateAsync(payload);
+      await updateMutation.mutateAsync(mutablePayload as Partial<UserProfile>);
       toast.success(t('updateSuccess'));
       setIsEditModalOpen(false);
       setIsAvatarModalOpen(false);
-    } catch (error) {
+    } catch {
       toast.error(t('updateError'));
     }
   };
@@ -79,26 +81,28 @@ export default function UserProfilePage(props: { params: Promise<{ id: string }>
             />
           </div>
           {isOwner && (
-             <Dialog open={isAvatarModalOpen} onOpenChange={setIsAvatarModalOpen}>
-               <DialogTrigger render={<Button variant="outline" size="sm" />}>
-                 {t('changeAvatar')}
-               </DialogTrigger>
-               <DialogContent>
-                 <div className="p-4">
-                   <h3 className="text-lg font-bold mb-4">{t('uploadAvatarTitle')}</h3>
-                   <AvatarUpload 
-                     value={profile.avatar_url || profile.avatar}
-                     onChange={(url) => {
-                       if (url) {
-                         handleUpdate({ avatar: url });
-                       }
-                     }}
-                     disabled={updateMutation.isPending}
-                     isSubmitting={updateMutation.isPending}
-                   />
-                 </div>
-               </DialogContent>
-             </Dialog>
+            <Dialog open={isAvatarModalOpen} onOpenChange={setIsAvatarModalOpen}>
+              <DialogTrigger render={<Button variant="outline" size="sm" />}>
+                {t('changeAvatar')}
+              </DialogTrigger>
+              <DialogContent>
+                {isAvatarModalOpen && (
+                  <div className="p-4">
+                    <h3 className="text-lg font-bold mb-4">{t('uploadAvatarTitle')}</h3>
+                    <AvatarUpload 
+                      value={profile.avatar_url || profile.avatar}
+                      onChange={(url) => {
+                        if (url) {
+                          handleUpdate({ avatar: url });
+                        }
+                      }}
+                      disabled={updateMutation.isPending}
+                      isSubmitting={updateMutation.isPending}
+                    />
+                  </div>
+                )}
+              </DialogContent>
+            </Dialog>
           )}
         </div>
 
@@ -116,12 +120,14 @@ export default function UserProfilePage(props: { params: Promise<{ id: string }>
                   {t('editProfile')}
               </DialogTrigger>
               <DialogContent className="max-w-[90%] md:max-w-sm overflow-y-auto max-h-[90vh] p-0 border-0">
-                <ProfileEditForm 
-                  initialData={profile} 
-                  onSubmit={handleUpdate}
-                  isSubmitting={updateMutation.isPending}
-                  onCancel={() => setIsEditModalOpen(false)}
-                />
+                {isEditModalOpen && (
+                  <ProfileEditForm 
+                    initialData={profile} 
+                    onSubmit={handleUpdate}
+                    isSubmitting={updateMutation.isPending}
+                    onCancel={() => setIsEditModalOpen(false)}
+                  />
+                )}
               </DialogContent>
             </Dialog>
           )}

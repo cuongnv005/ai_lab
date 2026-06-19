@@ -17,6 +17,8 @@ import { Button } from '@bks/ds-system-sdk/components/ui/button';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 
+import { SimilarPosts } from './similar-posts';
+
 export default function PostDetailPage() {
   const t = useTranslations("PostDetailPage");
   const params = useParams();
@@ -27,7 +29,6 @@ export default function PostDetailPage() {
     post,
     isLoading,
     isError,
-    error,
     toggleLike,
     isLiking,
     refetch,
@@ -62,7 +63,6 @@ export default function PostDetailPage() {
 
   const {
     comments,
-    pagination,
     isLoading: isLoadingComments,
     hasMore,
     loadMore,
@@ -70,7 +70,6 @@ export default function PostDetailPage() {
     deleteComment,
     toggleLike: toggleCommentLike,
     isCreating,
-    isDeleting,
     deletingCommentId,
     isLiking: isLikingComment,
   } = useComments(postId);
@@ -143,32 +142,18 @@ export default function PostDetailPage() {
     }
   }
 
+  // Extract similar tag query and remove the [similar] tag from the article content
+  const similarMatch = contentWithoutFirstImage.match(/\[similar\]([\s\S]*?)\[\/similar\]/i);
+  const tagQuery = similarMatch ? similarMatch[1]?.trim() : undefined;
+  const contentWithoutSimilar = contentWithoutFirstImage.replace(/\[similar\][\s\S]*?\[\/similar\]/gi, '');
+
   return (
     <div className="min-h-screen bg-background">
-      <div className="max-w-7xl mx-auto md:px-4 py-8">
-        {/* Back & Edit Action Header */}
-        <div className="mb-6 lg:pl-24 lg:pr-8 flex items-center justify-between">
-          <button
-            onClick={() => router.back()}
-            className="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-primary transition-colors cursor-pointer"
-          >
-            <ArrowLeft className="w-3.5 h-3.5" />
-            <span>{t("back", { defaultValue: "Quay lại" })}</span>
-          </button>
-
-          {canEdit && (
-            <Link href={`/dashboard/posts/${post.id}/edit`}>
-              <Button size="sm" variant="outline" className="text-xs font-bold gap-1.5 cursor-pointer">
-                <Edit className="w-3.5 h-3.5" />
-                {t("editPost", { defaultValue: "Chỉnh sửa bài viết" })}
-              </Button>
-            </Link>
-          )}
-        </div>
-
-        <div className="flex flex-col lg:flex-row gap-8 relative lg:items-start">
-          {/* Sticky Actions Sidebar (Desktop only) */}
-          <aside className="hidden lg:block sticky top-24 w-16 flex-shrink-0 lg:mt-80">
+      <main className="pt-4 md:pt-24 pb-20">
+        {/* First Grid Container: Sidebars and Article Content only */}
+        <div className="px-4 md:px-8 max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6">
+          {/* Social/Utility Sidebar Left (Fixed-like behavior) */}
+          <div className="hidden lg:flex lg:col-span-1 flex-col items-center gap-6 pt-12">
             <PostActions
               post={post}
               isAuthenticated={!!user}
@@ -178,47 +163,74 @@ export default function PostDetailPage() {
               onReport={() => setReportModalOpen(true)}
               isSidebar={true}
             />
-          </aside>
+          </div>
 
-          {/* Main content wrapper */}
-          <div className="w-full flex-1 min-w-0 lg:max-w-3xl">
-            {/* Article Card */}
-            <article className="bg-card border border-border rounded-2xl overflow-hidden shadow-lg">
-              {/* Featured Image */}
-              <div className="relative h-64 md:h-80 bg-zinc-950">
-                <img
-                  src={imageUrl}
-                  alt={post.title}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
-              </div>
+          {/* Article Section */}
+          <article className="lg:col-span-8">
+            {/* Back & Edit Action Header */}
+            <div className="mb-6 flex items-center justify-between">
+              <button
+                onClick={() => router.back()}
+                className="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-primary transition-colors cursor-pointer"
+              >
+                <ArrowLeft className="w-3.5 h-3.5" />
+                <span>{t("back", { defaultValue: "Quay lại" })}</span>
+              </button>
 
-              <div className="p-6 md:p-10 xl:-mt-20 relative">
-                {/* Post Header */}
-                <PostHeader post={post} />
+              {canEdit && (
+                <Link href={`/dashboard/posts/${post.id}/edit`}>
+                  <Button size="sm" variant="outline" className="text-xs font-bold gap-1.5 cursor-pointer">
+                    <Edit className="w-3.5 h-3.5" />
+                    {t("editPost", { defaultValue: "Chỉnh sửa bài viết" })}
+                  </Button>
+                </Link>
+              )}
+            </div>
 
-                {/* Post Actions (Mobile/Tablet only) */}
-                <div className="lg:hidden">
-                  <PostActions
-                    post={post}
-                    isAuthenticated={!!user}
-                    currentUser={user}
-                    isLiking={isLiking}
-                    onToggleLike={async () => { await toggleLike(); }}
-                    onReport={() => setReportModalOpen(true)}
-                  />
-                </div>
+            {/* Hero Image */}
+            <figure className="mb-8 relative rounded-xl overflow-hidden aspect-video border border-[#E2E8F0] dark:border-[#2d2d30] bg-zinc-950">
+              <img
+                src={imageUrl}
+                alt={post.title}
+                className="w-full h-full object-cover"
+              />
+            </figure>
 
-                {/* Article Content */}
-                <ArticleBody content={contentWithoutFirstImage} postId={postId} />
-              </div>
-            </article>
+            {/* Post Header */}
+            <PostHeader post={post} />
 
-            {/* Author Info (Mobile/Tablet only) */}
-            <div className="mt-8 lg:hidden">
+            {/* Post Actions (Mobile/Tablet only) */}
+            <div className="lg:hidden">
+              <PostActions
+                post={post}
+                isAuthenticated={!!user}
+                currentUser={user}
+                isLiking={isLiking}
+                onToggleLike={async () => { await toggleLike(); }}
+                onReport={() => setReportModalOpen(true)}
+              />
+            </div>
+
+            {/* Article Content */}
+            <ArticleBody content={contentWithoutSimilar} postId={postId} />
+          </article>
+
+          {/* Sidebar Right */}
+          <aside className="lg:col-span-3 space-y-6">
+            <div className="sticky top-24 space-y-6 md:pt-13">
               <AuthorWidget user={post.user} userId={post.user_id} />
             </div>
+          </aside>
+        </div>
+
+        {/* Second Grid Container: Similar Posts & Comment Section */}
+        <div className="px-4 md:px-8 max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6 mt-8">
+          {/* Offset spacer to align with the Article section */}
+          <div className="hidden lg:block lg:col-span-1" />
+          
+          <div className="lg:col-span-8">
+            {/* Similar Posts */}
+            <SimilarPosts postId={postId} tagQuery={tagQuery} />
 
             {/* Comments Section */}
             <div id="comments-section" className="mt-8">
@@ -239,13 +251,8 @@ export default function PostDetailPage() {
               />
             </div>
           </div>
-
-          {/* Right Sidebar (Desktop only) */}
-          <aside className="hidden lg:block w-72 flex-shrink-0 sticky top-24">
-            <AuthorWidget user={post.user} userId={post.user_id} />
-          </aside>
         </div>
-      </div>
+      </main>
 
       {/* Report Modal */}
       <ReportModal

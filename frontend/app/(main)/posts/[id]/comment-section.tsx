@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import type { Comment } from '@/features/posts/types/comment';
 import type { User } from '@/features/auth/types';
 import { MessageSquare, Loader2 } from 'lucide-react';
-import { Button } from '@bks/ds-system-sdk/components/ui/button';
 import { MemoizedCommentItem } from './comment-item';
 import { CommentForm } from './comment-form';
 import { useTranslations } from 'next-intl';
@@ -48,12 +47,13 @@ export function CommentSection({
   const getReplies = (comment: Comment) => comment.replies || [];
 
   return (
-    <div className="bg-card border border-border rounded-2xl p-3 md:p-8">
+    <section className="border-t border-[#E2E8F0] dark:border-[#2d2d30] mt-12 pt-6">
       {/* Header */}
-      <div className="flex items-center gap-3 mb-6">
-        <MessageSquare className="w-5 h-5 text-blue-400" />
-        <h2 className="text-xl font-bold text-foreground">{t('title')}</h2>
-        <span className="text-muted-foreground text-sm">({totalCount})</span>
+      <div className="flex items-center gap-2 mb-6 text-left">
+        <MessageSquare className="w-5 h-5 text-primary" />
+        <h3 className="font-headline-md text-lg md:text-xl text-on-surface">
+          {t('title')} <span className="text-on-surface-variant font-normal opacity-60">({totalCount})</span>
+        </h3>
       </div>
 
       {/* Comment Form for Authenticated Users */}
@@ -65,11 +65,11 @@ export function CommentSection({
           />
         </div>
       ) : (
-        <div className="mb-8 p-4 rounded-xl bg-muted border border-border text-center">
-          <p className="text-muted-foreground mb-3">{t('loginPrompt')}</p>
+        <div className="mb-8 p-6 rounded-xl glass-card text-center">
+          <p className="text-on-surface-variant mb-3">{t('loginPrompt')}</p>
           <a
             href="/login"
-            className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
+            className="inline-flex items-center justify-center rounded-lg text-xs font-bold ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-[#E2E8F0] dark:border-[#2d2d30] bg-surface-container-low hover:bg-surface-container-highest text-on-surface h-9 px-4 py-2 cursor-pointer"
           >
             {t('loginBtn')}
           </a>
@@ -77,7 +77,7 @@ export function CommentSection({
       )}
 
       {/* Comments List */}
-      <div className="space-y-6">
+      <div className="space-y-6 text-left">
         {rootComments.map((comment) => (
           <MemoizedCommentItem
             key={comment.id}
@@ -98,15 +98,15 @@ export function CommentSection({
 
         {comments.length === 0 && !isLoading && (
           <div className="text-center py-12">
-            <MessageSquare className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
-            <p className="text-muted-foreground">{t('noComments')}</p>
-            <p className="text-muted-foreground text-sm mt-1">{t('firstComment')}</p>
+            <MessageSquare className="w-12 h-12 text-on-surface-variant/40 mx-auto mb-4" />
+            <p className="text-on-surface-variant">{t('noComments')}</p>
+            <p className="text-on-surface-variant/60 text-xs mt-1">{t('firstComment')}</p>
           </div>
         )}
 
         {isLoading && (
           <div className="flex justify-center py-8">
-            <Loader2 className="w-6 h-6 animate-spin text-blue-400" />
+            <Loader2 className="w-6 h-6 animate-spin text-primary" />
           </div>
         )}
       </div>
@@ -114,23 +114,22 @@ export function CommentSection({
       {/* Load More */}
       {hasMore && (
         <div className="mt-8 text-center">
-          <Button
-            variant="outline"
+          <button
             onClick={onLoadMore}
             disabled={isLoading}
-            className="border-border text-foreground hover:bg-muted"
+            className="border border-[#E2E8F0] dark:border-[#2d2d30] text-on-surface hover:bg-surface-container-highest px-4 py-2 rounded-lg text-xs font-semibold cursor-pointer disabled:opacity-50 disabled:pointer-events-none transition-all"
           >
             {isLoading ? (
               <>
-                <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                <Loader2 className="w-3.5 h-3.5 mr-2 animate-spin inline-block" />
                 {t('loading')}
               </>
             ) : (
               t('loadMore')
             )}
-          </Button>
+          </button>
         </div>
       )}
-    </div>
+    </section>
   );
 }

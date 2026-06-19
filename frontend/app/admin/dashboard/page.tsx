@@ -234,11 +234,11 @@ export default function AdminDashboardPage() {
                 <AreaChart data={chartData} margin={{ top: 4, right: 8, left: 0, bottom: 0 }}>
                   <defs>
                     <linearGradient id="colorValue" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="hsl(var(--primary))" stopOpacity={0.3} />
-                      <stop offset="95%" stopColor="hsl(var(--primary))" stopOpacity={0.02} />
+                      <stop offset="5%" stopColor="var(--primary)" stopOpacity={0.3} />
+                      <stop offset="95%" stopColor="var(--primary)" stopOpacity={0.02} />
                     </linearGradient>
                   </defs>
-                  <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" vertical={false} />
+                  <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" vertical={false} />
                   <XAxis
                     dataKey="date"
                     tickLine={false}
@@ -254,7 +254,7 @@ export default function AdminDashboardPage() {
                   <Area
                     type="monotone"
                     dataKey="value"
-                    stroke="hsl(var(--primary))"
+                    stroke="var(--primary)"
                     strokeWidth={2}
                     fill="url(#colorValue)"
                   />
@@ -264,9 +264,9 @@ export default function AdminDashboardPage() {
           </div>
 
           {/* Top lists */}
-          <div className="grid gap-4 lg:grid-cols-2">
+          <div className="grid gap-4 lg:grid-cols-3">
             {/* Top Posts */}
-            <div className="rounded-xl border border-border bg-card p-5 shadow-xs min-w-0">
+            <div className="lg:col-span-2 rounded-xl border border-border bg-card p-5 shadow-xs min-w-0">
               <h2 className="text-sm font-bold mb-3">{t('dashboard.topPosts.title')}</h2>
               {topPosts.length === 0 ? (
                 <p className="text-xs text-muted-foreground">{t('dashboard.topPosts.noData')}</p>

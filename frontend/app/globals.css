@@ -97,3 +97,110 @@
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0); */
 }
+
+/* Glass Card styling (default Light Mode) */
+.glass-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+}
+
+/* Glass Card styling (Dark Mode) */
+.dark .glass-card {
+  background: rgba(25, 27, 34, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid #2d2d30;
+}
+
+/* Article Typography and spacing (default Light Mode) */
+.article-content p {
+  margin-bottom: 24px;
+  color: #334155;
+  line-height: 1.75;
+}
+
+/* Article Typography and spacing (Dark Mode) */
+.dark .article-content p {
+  color: #c2c6d5;
+}
+
+.article-content h2 {
+  font-family: var(--font-hanken-grotesk), 'Hanken Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin-top: 48px;
+  margin-bottom: 16px;
+  color: #2563eb;
+}
+
+.dark .article-content h2 {
+  color: #adc6ff;
+}
+
+/* Custom Typography font roles for AI Lab */
+.font-headline-lg {
+  font-family: var(--font-hanken-grotesk), 'Hanken Grotesk', sans-serif;
+}
+.font-headline-md {
+  font-family: var(--font-hanken-grotesk), 'Hanken Grotesk', sans-serif;
+}
+.font-label-sm {
+  font-family: var(--font-jetbrains-mono), 'JetBrains Mono', monospace;
+}
+.font-body-lg {
+  font-family: var(--font-inter), 'Inter', sans-serif;
+}
+.font-body-md {
+  font-family: var(--font-inter), 'Inter', sans-serif;
+}
+
+/* Custom Typography sizes matching mockup */
+.text-headline-lg-mobile {
+  font-size: 32px !important;
+  line-height: 38px !important;
+  font-weight: 700 !important;
+}
+
+@media (min-width: 768px) {
+  .text-headline-lg {
+    font-size: 40px !important;
+    line-height: 48px !important;
+    letter-spacing: -0.02em !important;
+    font-weight: 700 !important;
+  }
+}
+
+.text-headline-md {
+  font-size: 24px !important;
+  line-height: 32px !important;
+  font-weight: 600 !important;
+}
+
+.text-body-lg {
+  font-size: 16px !important;
+  line-height: 24px !important;
+  font-weight: 400 !important;
+}
+
+.text-body-md {
+  font-size: 14px !important;
+  line-height: 20px !important;
+  font-weight: 400 !important;
+}
+
+.text-label-sm {
+  font-size: 12px !important;
+  line-height: 16px !important;
+  letter-spacing: 0.05em !important;
+  font-weight: 500 !important;
+}
+
+/* Custom border overrides for the admin area */
+.admin-layout {
+  --border: #E2E8F0 !important;
+  --color-border: #E2E8F0 !important;
+}
+
+.dark .admin-layout {
+  --border: #2d2d30 !important;
+  --color-border: #2d2d30 !important;
+}

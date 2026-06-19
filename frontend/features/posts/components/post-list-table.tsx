@@ -46,7 +46,7 @@ export function PostListTable({
   return (
     <div className="space-y-6">
       {/* Thread list */}
-      <div className="border border-border rounded-xl overflow-hidden bg-card divide-y divide-border shadow-xs">
+      <div className="border border-[#E2E8F0] dark:border-[#2d2d30] rounded-xl overflow-hidden bg-card divide-y divide-[#E2E8F0] dark:divide-[#2d2d30] shadow-xs">
         {posts.map((post) => (
           <div key={post.id} className="flex items-center p-4 hover:bg-muted/30 transition-all gap-4">
             {/* Avatar Cell */}
@@ -118,13 +118,13 @@ export function PostListTable({
 
       {/* Pagination */}
       {pagination && pagination.lastPage > 1 && (
-        <div className="flex items-center justify-center gap-2 pt-6 border-t dark:border-zinc-800">
+        <div className="flex items-center justify-center gap-2 pt-6 dark:border-zinc-800">
           <Link
             href={page > 1 ? `${basePath}?page=${page - 1}` : '#'}
             className={`px-4 py-2 text-xs font-bold rounded-xl border transition-all flex items-center gap-1 ${
               page <= 1
-                ? 'opacity-50 pointer-events-none text-zinc-400 border-zinc-200 dark:border-zinc-800'
-                : 'text-zinc-700 hover:bg-gray-50 border-gray-200 dark:text-zinc-300 dark:border-zinc-800 dark:hover:bg-zinc-950'
+                ? 'opacity-50 pointer-events-none text-zinc-400 border-[#E2E8F0] dark:border-[#2d2d30]'
+                : 'text-zinc-700 hover:bg-muted/50 border-[#E2E8F0] dark:text-zinc-300 dark:border-[#2d2d30]'
             }`}
           >
             {commonT('prev', { defaultValue: 'Trước' })}
@@ -137,10 +137,10 @@ export function PostListTable({
               <Link
                 key={p}
                 href={`${basePath}?page=${p}`}
-                className={`w-9 h-9 flex items-center justify-center text-xs font-bold rounded-xl transition-all ${
+                className={`w-9 h-9 flex items-center justify-center text-xs font-bold rounded-xl transition-all border ${
                   isActive
-                    ? 'bg-[#3498db] text-white'
-                    : 'border border-gray-200 hover:bg-gray-50 text-zinc-700 dark:border-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-950'
+                    ? 'bg-primary text-white border-primary'
+                    : 'border-[#E2E8F0] hover:bg-muted/50 text-zinc-700 dark:border-[#2d2d30] dark:text-zinc-300'
                 }`}
               >
                 {p}
@@ -152,8 +152,8 @@ export function PostListTable({
             href={page < pagination.lastPage ? `${basePath}?page=${page + 1}` : '#'}
             className={`px-4 py-2 text-xs font-bold rounded-xl border transition-all flex items-center gap-1 ${
               page >= pagination.lastPage
-                ? 'opacity-50 pointer-events-none text-zinc-400 border-zinc-200 dark:border-zinc-800'
-                : 'text-zinc-700 hover:bg-gray-50 border-gray-200 dark:text-zinc-300 dark:border-zinc-800 dark:hover:bg-zinc-950'
+                ? 'opacity-50 pointer-events-none text-zinc-400 border-[#E2E8F0] dark:border-[#2d2d30]'
+                : 'text-zinc-700 hover:bg-muted/50 border-[#E2E8F0] dark:text-zinc-300 dark:border-[#2d2d30]'
             }`}
           >
             {commonT('next', { defaultValue: 'Sau' })}

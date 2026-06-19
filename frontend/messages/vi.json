@@ -19,7 +19,9 @@
       "yearsAgo": "{years} năm trước",
       "joined": "Đã tham gia:",
       "postsCount": "Số lượng bài viết:",
-      "likesCount": "Tổng số lượt thích:"
+      "likesCount": "Tổng số lượt thích:",
+      "posts": "Bài viết",
+      "likes": "Yêu thích"
     },
     "postActions": {
       "copySuccess": "Đã sao chép liên kết bài viết",
@@ -153,6 +155,7 @@
     "noSearchResults": "Không tìm thấy bài viết nào chứa từ khóa \"{search}\".",
     "updatingFeatured": "Đang cập nhật các bài viết tiêu điểm...",
     "latestPosts": "Bài viết mới nhất",
+    "latestPostsSub": "Cập nhật những chuyển động mới nhất của giới công nghệ",
     "noPosts": "Hiện tại chưa có bài viết nào được xuất bản.",
     "hotCategories": "Danh mục nổi bật",
     "loadingCategories": "Đang tải danh mục...",
@@ -163,7 +166,16 @@
     "noTopAuthors": "Chưa có tác giả nổi bật.",
     "admin": "Quản trị viên",
     "byAuthor": "bởi {name}",
-    "viewsCount": "{count} lượt xem"
+    "viewsCount": "{count} lượt xem",
+    "newsletter": {
+      "title": "AI Daily Brief",
+      "description": "Cập nhật những tin tức AI quan trọng nhất, được tổng hợp gọn gàng trong hộp thư của bạn mỗi sáng.",
+      "placeholder": "Email của bạn...",
+      "button": "Đăng ký ngay",
+      "disclaimer": "Chúng tôi cam kết bảo mật thông tin và không spam.",
+      "invalidEmail": "Địa chỉ email không hợp lệ!",
+      "success": "Đăng ký nhận tin thành công!"
+    }
   },
   "CreatePostPage": {
     "backToList": "Quay lại danh sách bài viết",
@@ -280,7 +292,7 @@
     "oldPasswordLabel": "Mật khẩu cũ",
     "newPasswordLabel": "Mật khẩu mới",
     "confirmNewPasswordLabel": "Xác nhận mật khẩu mới",
-    "placeholder": "••••••••",
+    "placeholder": "Nhập mật khẩu...",
     "submit": "Đổi mật khẩu",
     "cancel": "Hủy",
     "success": "Đổi mật khẩu thành công.",
@@ -299,7 +311,7 @@
     "emailLabel": "Email / Tài khoản",
     "emailPlaceholder": "Nhập email hoặc tài khoản",
     "passwordLabel": "Mật khẩu",
-    "passwordPlaceholder": "••••••••",
+    "passwordPlaceholder": "Nhập mật khẩu...",
     "forgotPassword": "Quên mật khẩu?",
     "submit": "Đăng nhập",
     "noAccount": "Chưa có tài khoản?",
@@ -322,7 +334,9 @@
     "emailLabel": "Email",
     "emailPlaceholder": "email@cuaban.com",
     "passwordLabel": "Mật khẩu",
+    "passwordPlaceholder": "Nhập mật khẩu...",
     "confirmPasswordLabel": "Xác nhận mật khẩu",
+    "confirmPasswordPlaceholder": "Nhập lại mật khẩu...",
     "provinceLabel": "Tỉnh / Thành phố",
     "provincePlaceholder": "Chọn tỉnh/thành",
     "noProvince": "Không có tỉnh/thành",
@@ -376,7 +390,7 @@
     "newPasswordSubtitle": "Vui lòng nhập mật khẩu mới bảo mật hơn",
     "passwordLabel": "Mật khẩu mới",
     "confirmPasswordLabel": "Xác nhận mật khẩu mới",
-    "passwordPlaceholder": "••••••••",
+    "passwordPlaceholder": "Nhập mật khẩu mới...",
     "resetPasswordSubmit": "Cập nhật mật khẩu",
     "errors": {
       "emailRequired": "Email không được để trống",

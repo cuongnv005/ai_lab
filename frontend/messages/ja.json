@@ -19,7 +19,9 @@
       "yearsAgo": "{years} 年前",
       "joined": "参加日:",
       "postsCount": "投稿数:",
-      "likesCount": "いいね数:"
+      "likesCount": "いいね数:",
+      "posts": "投稿",
+      "likes": "いいね"
     },
     "postActions": {
       "copySuccess": "リンクをコピーしました",
@@ -163,7 +165,17 @@
     "noTopAuthors": "トップ著者はまだいません。",
     "admin": "管理者",
     "byAuthor": "{name} が作成",
-    "viewsCount": "{count} 回閲覧"
+    "viewsCount": "{count} 回閲覧",
+    "latestPostsSub": "テクノロジー界の最新動向をお届けします",
+    "newsletter": {
+      "title": "AIデイリーブリーフ",
+      "description": "毎朝、最も重要なAIニュースの要約を受信トレイにお届けします。",
+      "placeholder": "メールアドレスを入力してください...",
+      "button": "今すぐ登録",
+      "disclaimer": "個人情報は厳重に管理され、スパムを送信することはありません。",
+      "invalidEmail": "無効なメールアドレスです。",
+      "success": "ニュースレターの購読登録が完了しました！"
+    }
   },
   "CreatePostPage": {
     "backToList": "投稿一覧に戻る",
@@ -280,7 +292,7 @@
     "oldPasswordLabel": "現在のパスワード",
     "newPasswordLabel": "新しいパスワード",
     "confirmNewPasswordLabel": "新しいパスワード（確認）",
-    "placeholder": "••••••••",
+    "placeholder": "パスワードを入力...",
     "submit": "パスワードを変更",
     "cancel": "キャンセル",
     "success": "パスワードが正常に変更されました。",
@@ -299,7 +311,7 @@
     "emailLabel": "メール / ユーザー名",
     "emailPlaceholder": "メールまたはユーザー名を入力",
     "passwordLabel": "パスワード",
-    "passwordPlaceholder": "••••••••",
+    "passwordPlaceholder": "パスワードを入力...",
     "forgotPassword": "パスワードをお忘れですか？",
     "submit": "サインイン",
     "noAccount": "アカウントをお持ちでないですか？",
@@ -318,7 +330,9 @@
     "emailLabel": "メール",
     "emailPlaceholder": "your@email.com",
     "passwordLabel": "パスワード",
+    "passwordPlaceholder": "パスワードを入力...",
     "confirmPasswordLabel": "パスワード（確認）",
+    "confirmPasswordPlaceholder": "パスワードを再入力...",
     "provinceLabel": "都道府県 / 市",
     "provincePlaceholder": "都道府県/市を選択",
     "noProvince": "利用可能な都道府県がありません",
@@ -372,7 +386,7 @@
     "newPasswordSubtitle": "より安全な新しいパスワードを入力してください",
     "passwordLabel": "新しいパスワード",
     "confirmPasswordLabel": "新しいパスワード（確認）",
-    "passwordPlaceholder": "••••••••",
+    "passwordPlaceholder": "新しいパスワードを入力...",
     "resetPasswordSubmit": "パスワードを更新する",
     "errors": {
       "emailRequired": "メールアドレスは必須です",

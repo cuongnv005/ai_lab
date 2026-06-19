@@ -137,59 +137,59 @@
 
 :root {
   /* display */
-  --typo-display-size: 2.25rem;
-  --typo-display-leading: 1.15;
+  --typo-display-size: 3rem;
+  --typo-display-leading: 1.17;
   --typo-display-tracking: -0.02em;
-  --typo-display-weight: 600;
+  --typo-display-weight: 700;
 
   /* heading (doc hierarchy) */
-  --typo-heading-1-size: 1.875rem;
-  --typo-heading-1-leading: 1.2;
-  --typo-heading-1-tracking: -0.02em;
+  --typo-heading-1-size: 2rem;
+  --typo-heading-1-leading: 1.25;
+  --typo-heading-1-tracking: -0.01em;
   --typo-heading-1-weight: 600;
 
-  --typo-heading-2-size: 1.25rem;
-  --typo-heading-2-leading: 1.25;
-  --typo-heading-2-tracking: -0.01em;
-  --typo-heading-2-weight: 500;
+  --typo-heading-2-size: 1.5rem;
+  --typo-heading-2-leading: 1.33;
+  --typo-heading-2-tracking: normal;
+  --typo-heading-2-weight: 600;
 
-  --typo-heading-3-size: 1rem;
-  --typo-heading-3-leading: 1.25;
+  --typo-heading-3-size: 1.125rem;
+  --typo-heading-3-leading: 1.35;
   --typo-heading-3-tracking: normal;
   --typo-heading-3-weight: 500;
 
   /* title (UI block — CardTitle rhythm) */
-  --typo-title-size: 1.125rem;
+  --typo-title-size: 1.25rem;
   --typo-title-leading: 1.25;
   --typo-title-tracking: normal;
-  --typo-title-weight: 500;
+  --typo-title-weight: 600;
 
   /* body */
-  --typo-body-size: 0.875rem;
-  --typo-body-leading: 1.35;
+  --typo-body-size: 1rem;
+  --typo-body-leading: 1.5;
   --typo-body-tracking: 0.01em;
   --typo-body-weight: 400;
 
   /* ui (reference — shadcn default 14px) */
   --typo-ui-size: 0.875rem;
-  --typo-ui-leading: 1.4;
+  --typo-ui-leading: 1.43;
   --typo-ui-tracking: normal;
   --typo-ui-weight: 400;
 
   /* label */
-  --typo-label-md-size: 0.75rem;
-  --typo-label-md-leading: 1.35;
+  --typo-label-md-size: 0.875rem;
+  --typo-label-md-leading: 1.43;
   --typo-label-md-tracking: normal;
-  --typo-label-md-weight: 500;
+  --typo-label-md-weight: 600;
 
-  --typo-label-sm-size: 0.625rem;
-  --typo-label-sm-leading: 1.35;
-  --typo-label-sm-tracking: normal;
+  --typo-label-sm-size: 0.75rem;
+  --typo-label-sm-leading: 1.33;
+  --typo-label-sm-tracking: 0.01em;
   --typo-label-sm-weight: 500;
 
   /* caption */
   --typo-caption-size: 0.75rem;
-  --typo-caption-leading: 1.35;
+  --typo-caption-leading: 1.33;
   --typo-caption-tracking: normal;
   --typo-caption-weight: 400;
 

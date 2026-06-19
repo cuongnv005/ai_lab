@@ -19,7 +19,9 @@
       "yearsAgo": "{years} years ago",
       "joined": "Joined:",
       "postsCount": "Total posts:",
-      "likesCount": "Total likes:"
+      "likesCount": "Total likes:",
+      "posts": "Posts",
+      "likes": "Likes"
     },
     "postActions": {
       "copySuccess": "Link copied to clipboard",
@@ -153,6 +155,7 @@
     "noSearchResults": "No posts found containing \"{search}\".",
     "updatingFeatured": "Updating featured posts...",
     "latestPosts": "Latest Posts",
+    "latestPostsSub": "Update the latest movements of the tech world",
     "noPosts": "No posts have been published yet.",
     "hotCategories": "Hot Categories",
     "loadingCategories": "Loading categories...",
@@ -163,7 +166,16 @@
     "noTopAuthors": "No top authors yet.",
     "admin": "Admin",
     "byAuthor": "by {name}",
-    "viewsCount": "{count} views"
+    "viewsCount": "{count} views",
+    "newsletter": {
+      "title": "AI Daily Brief",
+      "description": "Get the most important AI news summaries delivered to your inbox every morning.",
+      "placeholder": "Your email address...",
+      "button": "Subscribe now",
+      "disclaimer": "We respect your privacy and never spam.",
+      "invalidEmail": "Invalid email address!",
+      "success": "Subscribed successfully!"
+    }
   },
   "CreatePostPage": {
     "title": "Create New Discussion",
@@ -289,7 +301,7 @@
     "oldPasswordLabel": "Old Password",
     "newPasswordLabel": "New Password",
     "confirmNewPasswordLabel": "Confirm New Password",
-    "placeholder": "••••••••",
+    "placeholder": "Enter password...",
     "submit": "Change Password",
     "cancel": "Cancel",
     "success": "Password changed successfully.",
@@ -308,7 +320,7 @@
     "emailLabel": "Email / Username",
     "emailPlaceholder": "Enter email or username",
     "passwordLabel": "Password",
-    "passwordPlaceholder": "••••••••",
+    "passwordPlaceholder": "Enter password...",
     "forgotPassword": "Forgot password?",
     "submit": "Sign In",
     "noAccount": "Don't have an account?",
@@ -331,7 +343,9 @@
     "emailLabel": "Email",
     "emailPlaceholder": "your@email.com",
     "passwordLabel": "Password",
+    "passwordPlaceholder": "Enter password...",
     "confirmPasswordLabel": "Confirm Password",
+    "confirmPasswordPlaceholder": "Confirm password...",
     "provinceLabel": "Province / City",
     "provincePlaceholder": "Select province/city",
     "noProvince": "No provinces available",
@@ -385,7 +399,7 @@
     "newPasswordSubtitle": "Please enter a more secure new password",
     "passwordLabel": "New Password",
     "confirmPasswordLabel": "Confirm New Password",
-    "passwordPlaceholder": "••••••••",
+    "passwordPlaceholder": "Enter new password...",
     "resetPasswordSubmit": "Update Password",
     "errors": {
       "emailRequired": "Email is required",

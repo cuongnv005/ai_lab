@@ -23,6 +23,7 @@ export interface UserSummary {
   avatar_url?: string | null;
   posts_count?: number;
   rating_value?: number;
+  role?: string;
   created_at?: string;
 }
 

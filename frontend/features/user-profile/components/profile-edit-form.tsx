@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -27,7 +28,10 @@ export type ProfileFormValues = {
   bio?: string | null;
 };
 
-const getProfileSchema = (t: any, vT: any) => z.object({
+const getProfileSchema = (
+  t: any,
+  vT: any
+) => z.object({
   name: z.string().min(1, vT("required", { field: t("name") })).max(50, vT("maxLength", { field: t("name"), max: 50 })),
   dob: z.string().nullable().optional().refine((val) => {
     if (!val) return true;
@@ -64,7 +68,17 @@ export function ProfileEditForm({ initialData, onSubmit, isSubmitting, onCancel 
     },
   });
 
-  const { register, handleSubmit, formState: { errors }, control } = form;
+  const { register, handleSubmit, formState: { errors }, control, reset } = form;
+
+  useEffect(() => {
+    reset({
+      name: initialData.name || "",
+      dob: initialData.dob || "",
+      hometown: initialData.hometown || "",
+      gender: initialData.gender ? String(initialData.gender) : "",
+      bio: initialData.bio || "",
+    });
+  }, [initialData, reset]);
 
   return (
     <Card>

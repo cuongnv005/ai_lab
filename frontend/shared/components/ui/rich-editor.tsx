@@ -229,8 +229,8 @@ export const RichEditor = ({ value, onChange, error }: RichEditorProps) => {
                 body {
                   font-family: Geist, ui-sans-serif, system-ui, sans-serif !important;
                   font-size: 16px !important;
-                  color: rgb(113, 113, 122) !important;
-                  background-color: ${isDark ? '#09090b' : '#ffffff'} !important;
+                  color: #1f2937 !important;
+                  background-color: #ffffff !important;
                   padding: 1rem !important;
                 }
                 img {
