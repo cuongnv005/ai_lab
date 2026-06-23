@@ -23,11 +23,11 @@ class PostFactory extends Factory
         return [
             'user_id' => User::factory(),
             'category_id' => Category::factory(),
-            'title' => fake()->sentence(),
-            'content' => fake()->paragraphs(4, true),
-            'summary' => fake()->paragraph(),
+            'title' => $this->faker->sentence(),
+            'content' => $this->faker->paragraphs(4, true),
+            'summary' => $this->faker->paragraph(),
             'status' => PostStatus::PUBLISHED->value,
-            'views_count' => fake()->numberBetween(0, 500),
+            'views_count' => $this->faker->numberBetween(0, 500),
             'reject_reason' => null,
         ];
     }
@@ -49,7 +49,7 @@ class PostFactory extends Factory
     {
         return $this->state(fn (array $attributes) => [
             'status' => PostStatus::REJECTED->value,
-            'reject_reason' => fake()->sentence(),
+            'reject_reason' => $this->faker->sentence(),
         ]);
     }
 }

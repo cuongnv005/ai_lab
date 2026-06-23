@@ -24,7 +24,7 @@ class ReportFactory extends Factory
             'user_id' => User::factory(),
             'reportable_type' => Post::class,
             'reportable_id' => Post::factory(),
-            'reason' => fake()->sentence(),
+            'reason' => $this->faker->sentence(),
             'status' => ReportStatus::PENDING->value,
             'resolved_by' => null,
             'resolved_at' => null,

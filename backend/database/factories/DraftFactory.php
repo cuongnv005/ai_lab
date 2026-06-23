@@ -23,8 +23,8 @@ class DraftFactory extends Factory
             'user_id' => User::factory(),
             'category_id' => Category::factory(),
             'post_id' => null,
-            'title' => fake()->sentence(),
-            'content' => fake()->paragraphs(3, true),
+            'title' => $this->faker->sentence(),
+            'content' => $this->faker->paragraphs(3, true),
             'tags' => ['chatgpt', 'laravel'],
         ];
     }
