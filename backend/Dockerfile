@@ -1,4 +1,4 @@
-FROM php:8.3-apache
+FROM php:8.4-apache
 
 # Cài đặt các thư viện hệ thống cần thiết và các extensions PHP
 RUN apt-get update && apt-get install -y \
@@ -35,7 +35,7 @@ COPY . .
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
 # Cài đặt các thư viện PHP
-RUN composer install --no-dev --optimize-autoloader
+RUN composer install --no-dev --optimize-autoloader --no-interaction --no-scripts --ignore-platform-reqs
 
 # Cấu hình cổng chạy mặc định theo biến PORT của Render
 RUN sed -i 's/Listen 80/Listen ${PORT}/g' /etc/apache2/ports.conf
