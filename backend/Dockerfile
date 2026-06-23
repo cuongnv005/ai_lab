@@ -41,5 +41,5 @@ RUN composer install --no-dev --optimize-autoloader --no-interaction --no-script
 RUN sed -i 's/Listen 80/Listen ${PORT}/g' /etc/apache2/ports.conf
 RUN sed -i 's/<VirtualHost \*:80>/<VirtualHost \*:${PORT}>/g' /etc/apache2/sites-available/*.conf
 
-# Chạy Laravel Optimization và Apache server khi container start
-CMD php artisan config:cache && php artisan route:cache && apache2-foreground
+# Chạy Laravel Migration, Optimization và Apache server khi container start
+CMD php artisan migrate --force && php artisan config:cache && php artisan route:cache && apache2-foreground
