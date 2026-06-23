@@ -18,31 +18,39 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        $adminUser = User::factory()->create([
+        $adminUser = User::create([
             'name' => 'Admin User',
             'email' => 'admin@example.com',
+            'email_verified_at' => now(),
             'password' => self::DEFAULT_PASSWORD,
+            'remember_token' => \Illuminate\Support\Str::random(10),
         ]);
         $adminUser->assignRole(UserRole::ADMIN->value);
 
-        $moderatorUser = User::factory()->create([
+        $moderatorUser = User::create([
             'name' => 'Moderator User',
             'email' => 'moderator@example.com',
+            'email_verified_at' => now(),
             'password' => self::DEFAULT_PASSWORD,
+            'remember_token' => \Illuminate\Support\Str::random(10),
         ]);
         $moderatorUser->assignRole(UserRole::MODERATOR->value);
 
-        $memberUser1 = User::factory()->create([
+        $memberUser1 = User::create([
             'name' => 'Member One',
             'email' => 'member1@example.com',
+            'email_verified_at' => now(),
             'password' => self::DEFAULT_PASSWORD,
+            'remember_token' => \Illuminate\Support\Str::random(10),
         ]);
         $memberUser1->assignRole(UserRole::MEMBER->value);
 
-        $memberUser2 = User::factory()->create([
+        $memberUser2 = User::create([
             'name' => 'Member Two',
             'email' => 'member2@example.com',
+            'email_verified_at' => now(),
             'password' => self::DEFAULT_PASSWORD,
+            'remember_token' => \Illuminate\Support\Str::random(10),
         ]);
         $memberUser2->assignRole(UserRole::MEMBER->value);
     }
