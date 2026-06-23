@@ -56,7 +56,8 @@ export class AuthRepository extends BaseRepository implements IAuthRepository {
   }
 
   async register(credentials: RegisterCredentials): Promise<{ user: User; message?: string | null }> {
-    await this.ensureCsrfToken()
+    // CSRF token is not needed for Bearer Token Authentication
+    // await this.ensureCsrfToken()
     interface BackendRegisterResponse {
       success: boolean
       message: string | null
@@ -87,7 +88,8 @@ export class AuthRepository extends BaseRepository implements IAuthRepository {
   }
 
   async login(credentials: LoginCredentials): Promise<{ user: User; message?: string | null }> {
-    await this.ensureCsrfToken()
+    // CSRF token is not needed for Bearer Token Authentication
+    // await this.ensureCsrfToken()
     interface BackendLoginResponse {
       success: boolean
       message: string | null

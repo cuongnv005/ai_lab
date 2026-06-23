@@ -28,7 +28,8 @@ return Application::configure(basePath: dirname(__DIR__))
 
         // Sanctum SPA: requests from configured stateful domains are authenticated
         // via the session cookie (CSRF-protected) instead of a bearer token.
-        $middleware->statefulApi();
+        // Disabled to enforce Bearer Token authentication only
+        // $middleware->statefulApi();
 
         // Localize API responses from the request's "Accept-Language" header.
         $middleware->api(append: [SetLocale::class]);
